@@ -1,8 +1,81 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Accueil{% endblock %}
-
-{% block body %}
-    <h1>Bienvenue sur votre page d'accueil {{user.username}}</h1>
-    {# Ajoutez ici le contenu de votre page d'accueil #}
+{% block title %}Accueil
 {% endblock %}
+{% block body %}
+	<style>:root
+	{
+		--navbar-height: 0;
+	}
+	.blurred-bg {
+		background-image: url('images/front-view.JPG');
+		background-size: cover;
+		background-position: center;
+	}
+	.hero-section {
+		height: calc(100vh - var(--navbar-height));
+	}
+</style>
+{# <h1>Bienvenue sur votre page d'accueil </h1> #}
+{# <h1>{{user.username}}</h1> #}
+{# Ajoutez ici le contenu de votre page d'accueil #}
+	<div class="bg-background dark:bg-background text-text dark:text-text overflow-hidden hero-section"> <div
+		class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
+
+		<!-- Left side content -->
+		<div class="flex flex-col justify-center items-start p-6 lg:w-1/2 max-w-2xl">
+			<div class="absolute inset-0 -z-10 overflow-hidden">
+				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
+					<defs>
+						<pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternunits="userSpaceOnUse">
+							<path d="M100 200V.5M.5 .5H200" fill="none"/>
+						</pattern>
+					</defs>
+					<svg x="50%" y="-1" class="overflow-visible fill-gray-50">
+						<path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0"/>
+					</svg>
+					<rect width="100%" height="100%" stroke-width="0" fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"/>
+				</svg>
+			</div>
+			<h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3">
+				{{ 'home_body.hero_section.welcome' | trans }}
+			</h1>
+			<p class="text-base lg:text-lg mb-6">
+				{{ 'home_body.hero_section.sub-text1' | trans }}
+				<span class="text-main-green font-semibold">{{ 'home_body.hero_section.sub-text2' | trans }}</span>
+				{{ 'home_body.hero_section.sub-text3' | trans }}
+			</p>
+			<div class="flex space-x-8">
+				<a href="#" class="bg-main-green text-white px-10 py-3 font-semibold rounded-lg text-base hover:scale-105 transition duration-75">
+					{{ 'home_body.hero_section.register' | trans }}
+				</a>
+				<a href="#" class="flex items-center text-main-green px-12 py-3 font-semibold rounded-lg  border border-secondary-green hover:border-main-green text-base hover:scale-105 transition duration-75">
+					{{ 'home_body.hero_section.login' | trans }}
+					<span class="ml-2">→</span>
+				</a>
+			</div>
+		</div>
+		<!-- Right side with blurred background and logo -->
+		<div
+			class="lg:w-1/2 h-48 lg:h-screen relative overflow-hidden">
+			<!-- Blurred background -->
+			<div class="absolute inset-0 blurred-bg filter blur-[2px] rounded-2xl "></div>
+			<!-- White circle with logo -->
+			<div class="absolute inset-0 flex justify-center items-center">
+				<div class="bg-white rounded-full p-4 shadow-lg mx-auto">
+					<img src="images/uiecc_logo.png" alt="UIECC Logo" class="w-32 h-32 lg:w-56 lg:h-56 object-contain">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function setNavbarHeight() {
+    const navbar = document.querySelector('header nav');
+    const navbarHeight = navbar.offsetHeight;
+    document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
+    }
+
+    window.addEventListener('load', setNavbarHeight);
+    window.addEventListener('resize', setNavbarHeight);
+</script>{% endblock %}
