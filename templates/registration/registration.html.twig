@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/custom-registration.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="custom-form-container">
+        <h1 class="custom-form-title">Inscription</h1>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'custom-form'}}) }}
+            <div class="custom-form-field">
+                {{ form_label(registrationForm.username, 'Nom d\'utilisateur', {'label_attr': {'class': 'custom-form-label'}}) }}
+                {{ form_widget(registrationForm.username, {'attr': {'class': 'custom-form-input'}}) }}
+            </div>
+
+            <div class="custom-form-field">
+                {{ form_label(registrationForm.plainPassword.first, 'Mot de passe', {'label_attr': {'class': 'custom-form-label'}}) }}
+                {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'custom-form-input'}}) }}
+            </div>
+
+            <div class="custom-form-field">
+                {{ form_label(registrationForm.plainPassword.second, 'Confirmer le mot de passe', {'label_attr': {'class': 'custom-form-label'}}) }}
+                {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'custom-form-input'}}) }}
+            </div>
+
+            <button type="submit" class="custom-form-button">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
