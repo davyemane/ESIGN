@@ -14,6 +14,16 @@
             <p class="text-sm text-gray-500 font-normal leading-relaxed">Remplissez le formulaire ci-dessous pour {{ candidate.id ? 'mettre à jour vos informations' : 'vous inscrire' }}.</p>
           </div>
         </div>
+        
+        {# Affichage des messages flash #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="bg-{{ label == 'error' ? 'red' : 'green' }}-100 border border-{{ label == 'error' ? 'red' : 'green' }}-400 text-{{ label == 'error' ? 'red' : 'green' }}-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline">{{ message }}</span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        
         <div class="divide-y divide-gray-200">
           <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
             {{ form_start(form, {'attr': {'class': 'space-y-6', 'id': 'multi-step-form'}}) }}
@@ -21,23 +31,29 @@
               {# Étape 1: Informations de paiement #}
               <div id="step1" class="form-step">
                 <h3 class="text-lg font-medium mb-4">Étape 1: Informations de paiement</h3>
-                {{ form_row(form.transactionNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.payementReceipt, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                <div class="mb-4">
+                    {{ form_label(form.transactionNumber, 'Numéro de transaction', {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                    {{ form_widget(form.transactionNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                    {{ form_errors(form.transactionNumber, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                </div>
+                <div class="mb-4">
+                    {{ form_label(form.payementReceipt, 'Reçu de paiement', {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                    {{ form_widget(form.payementReceipt, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                    {{ form_errors(form.payementReceipt, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                </div>
                 <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
               </div>
 
               {# Étape 2: Informations personnelles #}
               <div id="step2" class="form-step hidden">
                 <h3 class="text-lg font-medium mb-4">Étape 2: Informations personnelles</h3>
-                {{ form_row(form.name, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.sexe, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.dateOfBirth, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.placeOfBirth, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.nationality, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.cni, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.phoneNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.email, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.photo, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {% for field in ['name', 'sexe', 'dateOfBirth', 'placeOfBirth', 'nationality', 'cni', 'phoneNumber', 'email', 'photo'] %}
+                    <div class="mb-4">
+                        {{ form_label(form[field], null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                        {{ form_widget(form[field], {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                        {{ form_errors(form[field], {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                    </div>
+                {% endfor %}
                 <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
                 <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
               </div>
@@ -45,13 +61,13 @@
               {# Étape 3: Autres informations #}
               <div id="step3" class="form-step hidden">
                 <h3 class="text-lg font-medium mb-4">Étape 3: Autres informations</h3>
-                {{ form_row(form.region, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.depertement, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.field, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.examinationCenter, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.certificate, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.certificateYear, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
-                {{ form_row(form.language, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {% for field in ['region', 'depertement', 'field', 'examinationCenter', 'certificate', 'certificateYear', 'language'] %}
+                    <div class="mb-4">
+                        {{ form_label(form[field], null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                        {{ form_widget(form[field], {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                        {{ form_errors(form[field], {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                    </div>
+                {% endfor %}
                 <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4">{{ candidate.id ? 'Mettre à jour' : 'S\'inscrire' }}</button>
               </div>
@@ -90,24 +106,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function saveProgress() {
         const formData = new FormData(form);
-        formData.append('currentStep', currentStep);
-
-        fetch('{{ path('app_candidate_save_progress') }}', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Progression sauvegardée avec succès!');
-            } else {
-                alert('Erreur lors de la sauvegarde de la progression.');
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            if (form.elements[key].type !== 'file') {
+                data[key] = value;
             }
-        })
-        .catch(error => {
-            console.error('Erreur:', error);
-            alert('Une erreur est survenue lors de la sauvegarde.');
-        });
+        }
+        data['currentStep'] = currentStep;
+        
+        document.cookie = `candidateFormProgress=${JSON.stringify(data)}; path=/; max-age=604800; SameSite=Strict; Secure`;
+        alert('Progression sauvegardée avec succès!');
+    }
+
+    function loadProgress() {
+        const cookies = document.cookie.split(';');
+        const progressCookie = cookies.find(cookie => cookie.trim().startsWith('candidateFormProgress='));
+        
+        if (progressCookie) {
+            const progressData = JSON.parse(progressCookie.split('=')[1]);
+            Object.keys(progressData).forEach(key => {
+                if (key !== 'currentStep') {
+                    const field = form.elements[key];
+                    if (field && field.type !== 'file') {
+                        field.value = progressData[key];
+                    }
+                }
+            });
+            currentStep = parseInt(progressData.currentStep) || 0;
+            showStep(currentStep);
+        }
     }
 
     nextButtons.forEach(button => {
@@ -129,28 +156,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     saveButton.addEventListener('click', saveProgress);
 
     // Charger la progression sauvegardée au chargement de la page
-    fetch('{{ path('app_candidate_load_progress') }}')
-    .then(response => response.json())
-    .then(data => {
-        if (data.formData) {
-            Object.keys(data.formData).forEach(key => {
-                const field = form.elements[key];
-                if (field) {
-                    if (field.type === 'file') {
-                        // Ne pas essayer de définir la valeur des champs de type file
-                        console.log('Champ de type file détecté:', key);
-                    } else {
-                        field.value = data.formData[key];
-                    }
-                }
-            });
-            currentStep = parseInt(data.currentStep) || 0;
-            showStep(currentStep);
-        }
-    })
-    .catch(error => {
-        console.error('Erreur lors du chargement de la progression:', error);
-    });
+    loadProgress();
 });
 </script>
 

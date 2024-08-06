@@ -11,11 +11,14 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Symfony\Component\Form\FormError;
 
 class CandidateController extends AbstractController
 {
@@ -43,6 +46,14 @@ class CandidateController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Validation supplémentaire
+            // if ($this->validateCandidateData($candidate, $form)) {
+            //     return $this->render('candidate/register_update.html.twig', [
+            //         'form' => $form->createView(),
+            //         'candidate' => $candidate,
+            //     ]);
+            // }
+
             // Convertir le nom en majuscules
             $candidate->setName(strtoupper($candidate->getName()));
 
@@ -54,13 +65,104 @@ class CandidateController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash('success', 'Vos informations ont été enregistrées avec succès.');
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_candidate_preview', ['id' => $candidate->getId()]);
         }
 
         return $this->render('candidate/register_update.html.twig', [
             'form' => $form->createView(),
             'candidate' => $candidate,
         ]);
+    }
+
+    private function validateCandidateData(Candidate $candidate, $form): bool
+    {
+        $isValid = true;
+
+        if (empty($candidate->getName()) || strlen($candidate->getName()) < 2) {
+            $form->get('name')->addError(new FormError("Le nom doit contenir au moins 2 caractères."));
+            $isValid = false;
+        }
+
+        // if (!in_array($candidate->getSexe(), ['M', 'F'])) {
+        //     $form->get('sexe')->addError(new FormError("Le sexe doit être 'M' ou 'F'."));
+        //     $isValid = false;
+        // }
+
+        // // $now = new \DateTime();
+        // // $age = $candidate->getDateOfBirth()->diff($now)->y;
+        // // if ($age < 18) {
+        // //     $form->get('dateOfBirth')->addError(new FormError("Le candidat doit avoir au moins 18 ans."));
+        // //     $isValid = false;
+        // // }
+
+        // if (empty($candidate->getPlaceOfBirth())) {
+        //     $form->get('placeOfBirth')->addError(new FormError("Le lieu de naissance est requis."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getNationality())) {
+        //     $form->get('nationality')->addError(new FormError("La nationalité est requise."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getCni()) || !preg_match('/^\d{9}$/', $candidate->getCni())) {
+        //     $form->get('cni')->addError(new FormError("Le numéro CNI doit contenir 9 chiffres."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getPhoneNumber()) || !preg_match('/^\d{9}$/', $candidate->getPhoneNumber())) {
+        //     $form->get('phoneNumber')->addError(new FormError("Le numéro de téléphone doit contenir 9 chiffres."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getEmail()) || !filter_var($candidate->getEmail(), FILTER_VALIDATE_EMAIL)) {
+        //     $form->get('email')->addError(new FormError("L'adresse email n'est pas valide."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getRegion())) {
+        //     $form->get('region')->addError(new FormError("La région est requise."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getDepertement())) {
+        //     $form->get('depertement')->addError(new FormError("Le département est requis."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getField())) {
+        //     $form->get('field')->addError(new FormError("Le domaine est requis."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getExaminationCenter())) {
+        //     $form->get('examinationCenter')->addError(new FormError("Le centre d'examen est requis."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getCertificate())) {
+        //     $form->get('certificate')->addError(new FormError("Le certificat est requis."));
+        //     $isValid = false;
+        // }
+
+        // $currentYear = (int) date('Y');
+        // $certYear = (int) $candidate->getCertificateYear();
+        // if ($certYear < 1900 || $certYear > $currentYear) {
+        //     $form->get('certificateYear')->addError(new FormError("L'année du certificat n'est pas valide."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getLanguage())) {
+        //     $form->get('language')->addError(new FormError("La langue est requise."));
+        //     $isValid = false;
+        // }
+
+        // if (empty($candidate->getTransactionNumber())) {
+        //     $form->get('transactionNumber')->addError(new FormError("Le numéro de transaction est requis."));
+        //     $isValid = false;
+        // }
+
+        return $isValid;
     }
 
     private function handleFileUpload($form, $candidate, $slugger, $fieldName, $directoryParameter): void
@@ -88,45 +190,44 @@ class CandidateController extends AbstractController
         }
     }
 
-    #[Route('/candidate/profile', name: 'app_candidate_profile')]
-    public function profile(): Response
+
+
+    #[Route('/candidate/preview/{id}', name: 'app_candidate_preview')]
+    public function preview(EntityManagerInterface $entityManager, int $id): Response
     {
-        /** @var User $user */
-        $user = $this->security->getUser();
-        if (!$user) {
-            return $this->redirectToRoute('app_login');
-        }
-
-        $candidate = $user->getCandidate();
+        $candidate = $entityManager->getRepository(Candidate::class)->find($id);
         if (!$candidate) {
-            return $this->redirectToRoute('app_candidate_register');
+            throw $this->createNotFoundException('Candidat non trouvé.');
         }
 
-        return $this->render('candidate/profile.html.twig', [
+        return $this->render('candidate/preview.html.twig', [
             'candidate' => $candidate,
         ]);
     }
 
-
-    #[Route('/candidate/save-progress', name: 'app_candidate_save_progress', methods: ['POST'])]
-    public function saveProgress(Request $request, SessionInterface $session): JsonResponse
+    #[Route('/candidate/generate-pdf/{id}', name: 'app_candidate_generate_pdf')]
+    public function generatePdf(EntityManagerInterface $entityManager, int $id): Response
     {
-        $formData = $request->request->all();
-        $currentStep = $request->request->get('currentStep', 0);
-        
-        $session->set('candidate_form_progress', [
-            'formData' => $formData,
-            'currentStep' => $currentStep
+        $candidate = $entityManager->getRepository(Candidate::class)->find($id);
+        if (!$candidate) {
+            throw $this->createNotFoundException('Candidat non trouvé.');
+        }
+
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $dompdf = new Dompdf($options);
+
+        $html = $this->renderView('candidate/pdf.html.twig', [
+            'candidate' => $candidate,
         ]);
 
-        return new JsonResponse(['success' => true]);
-    }
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
 
-    #[Route('/candidate/load-progress', name: 'app_candidate_load_progress', methods: ['GET'])]
-    public function loadProgress(SessionInterface $session): JsonResponse
-    {
-        $progress = $session->get('candidate_form_progress', ['formData' => [], 'currentStep' => 0]);
-        return new JsonResponse($progress);
+        return new Response($dompdf->output(), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="fiche_inscription.pdf"',
+        ]);
     }
-
 }
