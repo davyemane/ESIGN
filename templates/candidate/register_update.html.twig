@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ candidate.id ? 'Mettre à jour' : 'Inscription' }} du candidat{% endblock %}
+
+{% block body %}
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+      <div class="max-w-md mx-auto">
+        <div class="flex items-center space-x-5">
+          <div class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">i</div>
+          <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+            <h2 class="leading-relaxed">{{ candidate.id ? 'Mettre à jour vos informations' : 'Inscription du candidat' }}</h2>
+            <p class="text-sm text-gray-500 font-normal leading-relaxed">Remplissez le formulaire ci-dessous pour {{ candidate.id ? 'mettre à jour vos informations' : 'vous inscrire' }}.</p>
+          </div>
+        </div>
+        <div class="divide-y divide-gray-200">
+          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            {{ form_start(form, {'attr': {'class': 'space-y-6', 'id': 'multi-step-form'}}) }}
+              
+              {# Étape 1: Informations de paiement #}
+              <div id="step1" class="form-step">
+                <h3 class="text-lg font-medium mb-4">Étape 1: Informations de paiement</h3>
+                {{ form_row(form.transactionNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.payementReceipt, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
+              </div>
+
+              {# Étape 2: Informations personnelles #}
+              <div id="step2" class="form-step hidden">
+                <h3 class="text-lg font-medium mb-4">Étape 2: Informations personnelles</h3>
+                {{ form_row(form.name, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.sexe, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.dateOfBirth, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.placeOfBirth, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.nationality, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.cni, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.phoneNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.email, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.photo, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
+                <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
+              </div>
+
+              {# Étape 3: Autres informations #}
+              <div id="step3" class="form-step hidden">
+                <h3 class="text-lg font-medium mb-4">Étape 3: Autres informations</h3>
+                {{ form_row(form.region, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.depertement, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.field, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.examinationCenter, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.certificate, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.certificateYear, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                {{ form_row(form.language, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4">{{ candidate.id ? 'Mettre à jour' : 'S\'inscrire' }}</button>
+              </div>
+
+              <div class="pt-4 flex items-center space-x-4">
+                <button type="button" id="save-progress" class="bg-green-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none hover:bg-green-600">
+                  Sauvegarder la progression
+                </button>
+              </div>
+            {{ form_end(form) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('multi-step-form');
+    const steps = Array.from(document.getElementsByClassName('form-step'));
+    const nextButtons = Array.from(document.getElementsByClassName('next-step'));
+    const prevButtons = Array.from(document.getElementsByClassName('prev-step'));
+    const saveButton = document.getElementById('save-progress');
+    let currentStep = 0;
+
+    function showStep(stepIndex) {
+        steps.forEach((step, index) => {
+            if (index === stepIndex) {
+                step.classList.remove('hidden');
+            } else {
+                step.classList.add('hidden');
+            }
+        });
+    }
+
+    function saveProgress() {
+        const formData = new FormData(form);
+        formData.append('currentStep', currentStep);
+
+        fetch('{{ path('app_candidate_save_progress') }}', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Progression sauvegardée avec succès!');
+            } else {
+                alert('Erreur lors de la sauvegarde de la progression.');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue lors de la sauvegarde.');
+        });
+    }
+
+    nextButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            currentStep++;
+            showStep(currentStep);
+            saveProgress();
+        });
+    });
+
+    prevButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            currentStep--;
+            showStep(currentStep);
+            saveProgress();
+        });
+    });
+
+    saveButton.addEventListener('click', saveProgress);
+
+    // Charger la progression sauvegardée au chargement de la page
+    fetch('{{ path('app_candidate_load_progress') }}')
+    .then(response => response.json())
+    .then(data => {
+        if (data.formData) {
+            Object.keys(data.formData).forEach(key => {
+                const field = form.elements[key];
+                if (field) {
+                    if (field.type === 'file') {
+                        // Ne pas essayer de définir la valeur des champs de type file
+                        console.log('Champ de type file détecté:', key);
+                    } else {
+                        field.value = data.formData[key];
+                    }
+                }
+            });
+            currentStep = parseInt(data.currentStep) || 0;
+            showStep(currentStep);
+        }
+    })
+    .catch(error => {
+        console.error('Erreur lors du chargement de la progression:', error);
+    });
+});
+</script>
+
+{% endblock %}
