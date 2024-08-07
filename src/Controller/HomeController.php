@@ -16,4 +16,12 @@ class HomeController extends AbstractController
             'user'=>$user
         ]);
     }
+    #[Route('/test', name: 'app_candid')]
+    public function index1(): Response
+    {
+        $user = $this->getUser();
+        return $this->render('candidate/index.html.twig', [
+            'user'=>$user
+        ]);
+    }
 }

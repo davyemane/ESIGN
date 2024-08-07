@@ -1,20 +1,57 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_login.html.twig' %}
 
-{% block title %}Hello CandidateController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 mt-10">
+    <div class="max-w-4xl w-full bg-white shadow-md rounded-lg p-8 mt-8">
+        <h1 class="text-5xl font-bold text-center mt-8">Inscription</h1>
+        <p class="text-center text-md mb-10">Cette section concerne les informations generale du candidat</p>
+        
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="mb-6">
+                <label for="transaction_number" class="block text-md font-semibold text-gray-700">Numero de Transaction:</label>
+                <input type="text" id="transaction_number" name="transaction_number" placeholder="Veuillez saisir le numero de transaction ex: 151287-123123213-23123" class="mt-1 p-4 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md focus:ring-main-green focus:border-main-green">
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/davy/ESIGN/src/Controller/CandidateController.php</code></li>
-        <li>Your template at <code>/home/davy/ESIGN/templates/candidate/index.html.twig</code></li>
-    </ul>
+            <div class="mb-6">
+                <label for="payment_receipt" class="block text-md font-semibold text-gray-700">Document scannee du recu de paiment</label>
+                <div class="mt-1 flex items-center">
+                    <input type="file" id="payment_receipt" name="payment_receipt" class="hidden">
+                    <label for="payment_receipt" class="cursor-pointer bg-gray-50 border border-gray-300 rounded-md shadow-sm px-4 py-2 flex items-center">
+                        <span>Cliquer Ici pour choisir le document</span>
+                        <img src="" alt="">
+                        <svg class="ml-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 9a3 3 0 006 0H8zM6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm7 6a1 1 0 01-1 1H8a1 1 0 110-2h4a1 1 0 011 1z" />
+                        </svg>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700">Apercu</label>
+                <div class="mt-1 p-4 h-40 bg-green-50 rounded-md relative">
+                    <p class="text-gray-500">doc.pdf</p>
+                    <button type="button" class="absolute top-1 right-1 text-gray-500 hover:text-gray-700">
+                        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex justify-between">
+                <button type="button" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">‹ Precedent</button>
+                <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Sauvegarder</button>
+                <button type="button" class="bg-green-300 text-white py-2 px-4 rounded-md cursor-not-allowed">Suivant ›</button>
+            </div>
+        </form>
+
+        <div class="mt-8 flex justify-center">
+            <span class="text-gray-500">Step 1 of 3</span>
+        </div>
+    </div>
 </div>
+
+
 {% endblock %}

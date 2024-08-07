@@ -13,6 +13,8 @@ home_header:
     register: Register
     toggle_dark_mode: Dark Mode
     toggle_light_mode: Light Mode
+    logout: Logout
+    save: Save
 
   language:
     change: Change Language
