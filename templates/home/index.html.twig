@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block title %}Accueil
 {% endblock %}
-{% block
-body %}
-<style>
-	:root {
+{% block body %}
+	<style>:root
+	{
 		--navbar-height: 0;
 	}
 
@@ -12,6 +11,8 @@ body %}
 		background-image: url("images/front-view.JPG");
 		background-size: cover;
 		background-position: center;
+		border-radius: 10%;
+		height: 100%; /* Adjust the size of the blurred image */
 	}
 
 	.hero-section {
@@ -21,34 +22,61 @@ body %}
 	body {
 		padding-top: var(--navbar-height);
 	}
+
+	/* Sprinkles effect */
+	.sprinkle {
+		position: fixed;
+		pointer-events: none;
+		background: rgba(0, 255, 0, 0.5);
+		border-radius: 50%;
+		transition: transform 0.3s, opacity 0.3s;
+	}
+
+	/* Section transitions */
+	section {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+	}
+
+	section.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* FAQ dropdown styles */
+	.faq-item {
+		transition: all 0.3s ease-in-out;
+	}
+
+	.faq-answer {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-in-out;
+	}
+
+	.faq-item.active .faq-answer {
+		max-height: 500px; /* Adjust as needed */
+	}
 </style>
-{#
-<h1>Bienvenue sur votre page d'accueil</h1>
-#}
-{#
-<h1>{{ user.username }}</h1>
-#}
+
 {# Ajoutez ici le contenu de votre page d'accueil #}
 <div class="bg-background dark:bg-background text-text dark:text-text overflow-hidden hero-section">
-	<div class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
+	<div
+		class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
 		<!-- Left side content -->
-		<div class="flex flex-col justify-center items-start p-6 lg:w-1/2 max-w-2xl relative" id="hero-section">
+		<div class="flex flex-col justify-center items-start p-6 lg:w-1/2 max-w-2xl " id="hero-section">
 			<div class="absolute inset-0 -z-10 overflow-hidden">
-				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]"
-					aria-hidden="true">
+				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
 					<defs>
-						<pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1"
-							patternunits="userSpaceOnUse">
-							<path d="M100 200V.5M.5 .5H200" fill="none" />
+						<pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternunits="userSpaceOnUse">
+							<path d="M100 200V.5M.5 .5H200" fill="none"/>
 						</pattern>
 					</defs>
 					<svg x="50%" y="-1" class="overflow-visible fill-gray-50">
-						<path
-							d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
-							stroke-width="0" />
+						<path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0"/>
 					</svg>
-					<rect width="100%" height="100%" stroke-width="0"
-						fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" />
+					<rect width="100%" height="100%" stroke-width="0" fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"/>
 				</svg>
 			</div>
 			<h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3">
@@ -62,12 +90,10 @@ body %}
 				{{ "home_body.hero_section.sub-text3" | trans }}
 			</p>
 			<div class="flex space-x-8">
-				<a href="{{path('app_register')}}"
-					class="bg-main-green text-white px-10 py-3 font-semibold rounded-lg text-base hover:scale-105 transition duration-75">
+				<a href="{{path('app_register')}}" class="bg-main-green text-white px-10 py-3 font-semibold rounded-lg text-base hover:scale-105 transition duration-75">
 					{{ "home_body.hero_section.register" | trans }}
 				</a>
-				<a href="{{path('app_login')}}"
-					class="flex items-center text-main-green px-12 py-3 font-semibold rounded-lg border border-secondary-green hover:border-main-green text-base hover:scale-105 transition duration-75">
+				<a href="{{path('app_login')}}" class="flex items-center text-main-green px-12 py-3 font-semibold rounded-lg border border-secondary-green hover:border-main-green text-base hover:scale-105 transition duration-75">
 					{{ "home_body.hero_section.login" | trans }}
 					<span class="ml-2">→</span>
 				</a>
@@ -75,14 +101,14 @@ body %}
 
 		</div>
 		<!-- Right side with blurred background and logo -->
-		<div class="lg:w-1/2 h-48 lg:h-screen relative overflow-hidden">
+		<div
+			class=" h-[700px] w-[600px] relative overflow-hidden ">
 			<!-- Blurred background -->
-			<div class="absolute inset-0 blurred-bg filter blur-[2px] rounded-2xl"></div>
+			<div class="absolute inset-0 blurred-bg filter blur-[2px] "></div>
 			<!-- White circle with logo -->
 			<div class="absolute inset-0 flex justify-center items-center">
-				<div class="bg-white rounded-full p-4 shadow-lg mx-auto">
-					<img src="images/uiecc_logo.png" alt="UIECC Logo"
-						class="w-32 h-32 lg:w-56 lg:h-56 object-contain" />
+				<div class="bg-white rounded-2xl p-4 shadow-lg mx-auto ">
+					<img src="images/uiecc_logo.png" alt="UIECC Logo" class="w-32 h-32 lg:w-56 lg:h-56 object-contain "/>
 				</div>
 			</div>
 		</div>
@@ -91,113 +117,163 @@ body %}
 
 <!-- Second section of the home page  -->
 
-<section class="bg-green-50 py-10" id="about-section">
+<section class="bg-green-50 p-16 w-full h-full mt-16 " id="about-section">
 	<div class="container mx-auto px-6">
-		<h2 class="text-3xl font-bold text-gray-800 mb-4">A propos</h2>
-		<p class="text-gray-600 mb-8 w-1/2">
-			Ci dessous vous verez les informations concernant l'ecole,Amet,
-			consectetur adipiscing e lit, sed do eiusmod tempor incididunt ut labore
-			et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-			ullamco laboris nisi.
+		<div class="flex items-center mb-4">
+			<h2 class="text-5xl font-bold text-gray-800">A propos</h2>
+			<img src="icons/info.svg" alt="Info Icon" class="w-10 h-10 ml-4"/>
+		</div>
+		<p class="text-gray-600 font-medium	 mb-8 w-1/2">
+			This school issues the Master of Engineering/Diplome d'Ingenieur, recruits
+			secondary education graduates aged 24 years at most through a competitive 
+			entrance examination and a selective direct entrance scheme.
 		</p>
 
 		<div class="flex flex-col md:flex-row md:space-x-4 mb-8">
 			<div class="bg-white p-6 rounded-lg shadow-md mb-4 md:mb-0 flex-1 text-start justify-start">
-				<img src="icons/open_book.svg" alt="Prospectus Icon" class="w-16 h-16 mb-4" />
-				<h3 class="text-xl font-bold text-gray-800 mb-2">
-					Prospectus de l'universite
+				<img src="icons/open_book.svg" alt="Prospectus Icon" class="w-16 h-16 mb-4"/>
+				<h3 class="text-xl font-bold text-gray-800 mb-4">
+					Prospectus of the university
 				</h3>
-				<p class="text-gray-600 mb-4">
-					Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
-					fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-					sequi nesciunt. Neque porro quisquam est.
+				<p class="text-gray-600 mb-6">
+					 L'École Supérieure Internationale du Genie Numérique de Sangmelima est à l'avant-garde de l'éducation technologique.
+					Nous formons les leaders de demain avec un programme innovant combinant
+					théorie et pratique, préparant nos étudiants à exceller dans l'industrie numérique en constante évolution.
+					 Découvrez notre offre complète de formation en téléchargeant notre prospectus ci-dessous.
 				</p>
+				<a href="pdf/ESIGN_Prospectus.pdf" download="ESIGN_Prospectus.pdf">
 				<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
-					Telecharger
+					Télécharger le prospectus
 				</button>
+				</a>
 			</div>
 
 			<div class="bg-white p-6 rounded-lg shadow-md flex-1 text-start justify-center">
-				<img src="icons/signature.svg" alt="Arrete Icon" class="w-16 h-16 mb-4" />
-				<h3 class="text-xl font-bold text-gray-800 mb-2">Arrete du Concours</h3>
-				<p class="text-gray-600 mb-4">
-					Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-					exercitation ullamco laboris nisi.
+				<img src="icons/signature.svg" alt="Arrete Icon" class="w-16 h-16 mb-4"/>
+				<h3 class="text-xl font-bold text-gray-800 mb-4">Arrete du Concours</h3>
+				<p class="text-gray-600 mb-10">
+					Le concours d'entrée à l'École Supérieure Internationale du Genie Numérique de Sangmelima est une opportunité unique pour
+					les futurs talents du digital. Ce document officiel détaille les modalités du concours,
+					les dates importantes, les matières évaluées et les critères de sélection.
+					Assurez-vous d'être bien préparé en téléchargeant l'arrêté officiel du concours ci-dessous.
 				</p>
+				<a href="pdf/ESIGN_Prospectus.pdf" download="ESIGN_Prospectus.pdf">
 				<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
-					Telecharger
+					Télécharger l'arrêté
 				</button>
+				</a>
 			</div>
 		</div>
 
-		<div class="text-center">
-			<img src="icons/info.svg" alt="Additional Image" class="mx-auto rounded-lg" />
-		</div>
+		{# <div class="text-center">
+			<img src="icons/info.svg" alt="Additional Image" class="mx-auto rounded-lg"/>
+		</div> #}
 	</div>
 </section>
 
 <!-- Third section of the home page  -->
 
+<!-- FAQ Section -->
 <section class="bg-white py-10" id="faq-section">
-	<div class="container mx-auto px-6">
-		<h2 class="text-3xl font-bold text-gray-800 mb-4">
-			Foire aux questions (FAQ)
-		</h2>
-		<p class="text-gray-600 mb-8">
-			Ci dessous vous aurez les questions fréquemment posées, n'hésitez pas à
-			vérifier au cas où.
-		</p>
+    <div class="container mx-auto px-6">
+       <div class="flex justify-between items-center mb-4">
+            <h2 class="text-3xl font-bold text-gray-800">Foire aux questions (FAQ)</h2>
+            <img src="icons/help.svg" alt="FAQ Icon" class="w-56 h-56"/>
+        </div>
+        <p class="text-gray-600 mb-8">
+            Ci dessous vous aurez les questions fréquemment posées, n'hésitez pas à vérifier au cas où.
+        </p>
 
-		<div class="flex flex-col space-y-4">
-			<div class="bg-main-green text-white p-4 rounded-lg shadow-md">
-				<div class="flex justify-between items-center">
-					<h3 class="text-lg font-semibold">
-						Et si j'ai validé sans télécharger la fiche d'inscription?
-					</h3>
-					<button class="text-white text-2xl">-</button>
-				</div>
-				<p class="text-white mt-2">
-					N'ayez crainte puisque vous avez déjà un compte. Connectez-vous à
-					votre compte et cela vous ramènera vers la page de téléchargement de
-					la fiche. Vous verrez le bouton "Télécharger fiche".
-				</p>
-			</div>
+        <div class="flex flex-col space-y-4">
+            <div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-semibold">Et si j'ai validé sans télécharger la fiche d'inscription?</h3>
+                    <button class="text-white text-2xl faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-white mt-2">
+                        N'ayez crainte puisque vous avez déjà un compte. Connectez-vous à votre compte et cela vous ramènera vers la page de téléchargement de la fiche. Vous verrez le bouton "Télécharger fiche".
+                    </p>
+                </div>
+            </div>
 
-			<div class="bg-main-green text-white p-4 rounded-lg shadow-md">
-				<div class="flex justify-between items-center">
-					<h3 class="text-lg font-semibold">
-						Je ne sais pas comment naviguer le site d'inscription?
-					</h3>
-					<button class="text-white text-2xl">-</button>
-				</div>
-				<p class="text-white mt-2">
-					Vous devez pour un premier temps créer un compte sur le site, ensuite
-					entrer les informations sur votre transaction bancaire pour le
-					concours et remplir les détails demandées.
-				</p>
-			</div>
+            <div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
+                <div class="flex justify-between items-center cursor-pointer">
+                    <h3 class="text-lg font-semibold">Je ne sais pas comment naviguer le site d'inscription?</h3>
+                    <button class="text-white text-2xl faq-toggle">+</button>
+                </div>
+                <div class="faq-answer">
+                    <p class="text-white mt-2">
+                        Vous devez pour un premier temps créer un compte sur le site, ensuite entrer les informations sur votre transaction bancaire pour le concours et remplir les détails demandées.
+                    </p>
+                </div>
+            </div>
 
-			<div class="bg-main-green text-white p-4 rounded-lg shadow-md">
-				<div class="flex justify-between items-center">
-					<h3 class="text-lg font-semibold">
-						Je ne sais pas comment naviguer le site d'inscription?
-					</h3>
-					<button class="text-white text-2xl">+</button>
-				</div>
-			</div>
-		</div>
-	</div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+    </div>
 </section>
 
 <script>
-	function setNavbarHeight() {
-		const navbar = document.querySelector("header");
-		const navbarHeight = navbar.offsetHeight;
-		document.documentElement.style.setProperty("--navbar-height", `${navbarHeight}px`);
-		document.body.style.paddingTop = `${navbarHeight}px`;
-	}
+    // Navbar height adjustment
+    function setNavbarHeight() {
+        const navbar = document.querySelector("header");
+        const navbarHeight = navbar.offsetHeight;
+        document.documentElement.style.setProperty("--navbar-height", `${navbarHeight}px`);
+        document.body.style.paddingTop = `${navbarHeight}px`;
+    }
 
-	window.addEventListener("load", setNavbarHeight);
-	window.addEventListener("resize", setNavbarHeight);
-</script>{% endblock %}
+    window.addEventListener("load", setNavbarHeight);
+    window.addEventListener("resize", setNavbarHeight);
+
+    // Sprinkles effect
+    function createSprinkle(x, y) {
+        const sprinkle = document.createElement('div');
+        sprinkle.className = 'sprinkle';
+        sprinkle.style.left = `${x}px`;
+        sprinkle.style.top = `${y}px`;
+        sprinkle.style.width = `${Math.random() * 10 + 5}px`;
+        sprinkle.style.height = sprinkle.style.width;
+        document.body.appendChild(sprinkle);
+
+        setTimeout(() => {
+            sprinkle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px)`;
+            sprinkle.style.opacity = '0';
+        }, 50);
+
+        setTimeout(() => {
+            document.body.removeChild(sprinkle);
+        }, 350);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        if (Math.random() < 0.1) {
+            createSprinkle(e.clientX, e.clientY);
+        }
+    });
+
+    // Section transitions
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // FAQ dropdown
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const toggle = item.querySelector('.faq-toggle');
+        toggle.addEventListener('click', () => {
+            item.classList.toggle('active');
+            toggle.textContent = item.classList.contains('active') ? '-' : '+';
+        });
+    });
+</script>
+{% endblock %}

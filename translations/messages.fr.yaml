@@ -1,9 +1,55 @@
+home_header:
+  app:
+    name: UIECC
+    logo_alt: Logo SYGENES
+
+  nav:
+    open_menu: Ouvrir le menu principal
+    close_menu: Fermer le menu
+    home: Accueil
+    about: À propos
+    faq: FAQ
+    login: Connexion
+    register: Inscription
+    toggle_dark_mode: Mode sombre
+    toggle_light_mode: Mode clair
+    logout: Déconnexion
+    save: Sauvegarder
+
+  language:
+    change: Changer de langue
+    english: Anglais
+    french: Français
+
+  footer:
+    copyright: © %year% UIECC. Tous droits réservés.
 home_body:
   hero_section:
-    welcome: "Bienvenue à Université Inter-états Congo-Cameroun"
+    welcome: "Bienvenue à l'Université Inter-États Congo-Cameroun"
     sub-text1: "Un pôle"
     sub-text2: "d'excellence scientifique"
     sub-text3: "et technologique au cœur de l'Afrique Centrale."
-    register: Inscrivez-vous
+    register: Inscrivez-vous maintenant
     login: Connexion
-  
+
+login_page:
+  heading: Connexion
+  username_label: Nom d'utilisateur
+  password_label: Mot de passe
+  sign_in_button: Se connecter
+  welcome_message: " "
+  slogan: " "
+  title: "Connexion"
+  description: "Entrez vos identifiants ici pour continuer l'inscription"
+
+registration_page:
+  heading: Créer un compte
+  username_label: Nom d'utilisateur
+  password_label: Mot de passe
+  sign_up_button: S'inscrire
+  welcome_message: " "
+  slogan: " "
+  title: "Inscription"
+  description: "Entrez vos identifiants ici pour créer un compte"
+  confirm_password: "Confirmer le mot de passe"
+  password: "Mot de passe"
