@@ -21,8 +21,8 @@ class RegisitrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                'first_options' => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Répéter le mot de passe'],
+                'first_options' => ['label' => ' '],
+                'second_options' => ['label' => ' '],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',

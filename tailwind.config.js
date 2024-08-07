@@ -11,6 +11,7 @@ module.exports = {
         'secondary-green': '#8AC774',
         'bg-white': '#ffffff',
         'white': '#ffffff',
+
       }
     },
   },

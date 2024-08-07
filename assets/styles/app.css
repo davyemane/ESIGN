@@ -12,16 +12,43 @@ body {
     min-height: 100vh;
 }
 :root {
-    --dark-gray: #1f2937;
-    --primary-color: #f97316;
-    --primary-color-hover: rgb(251 146 60);
-    --secondary-color: rgb(52, 128, 251);
-    --secondary-color-hover: rgb(65, 135, 248);
-    --background-color: #f5f5f5;
-    --text-color: #2b2a2a;
+  --primary-color: #109646;
+  --primary-color-hover: #8AC774;
+  --secondary-color: rgb(52, 128, 251);
+  --secondary-color-hover: rgb(65, 135, 248);
+  --background-color: #f5f5f5;
+  --text-color: #2b2a2a;
+  --hover-color: #4a4a4a;
 }
 
 .dark {
   --background-color: #1f2937;  /* Dark gray instead of pure black */
   --text-color: #e5e7eb;  /* Light gray for better readability */
+  --hover-color: #9ca3af; /* Lighter gray for hover effect */
+}
+
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: var(--primary-color);
+  transition: width 0.4s ease;
+  -webkit-transition: width 0.4s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+  background: var(--primary-color-hover);
 }

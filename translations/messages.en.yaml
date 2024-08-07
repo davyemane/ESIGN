@@ -29,4 +29,26 @@ home_body:
     sub-text3: "et technologique au cœur de l'Afrique Centrale."
     register: Register now
     login: Login
-  
+
+
+login_page:
+  heading: Login
+  username_label: Username
+  password_label: Password
+  sign_in_button: Sign in
+  welcome_message: " "
+  slogan: " "
+  title: "Login"
+  description: "Enter your credentials here to continue the registration"
+
+registration_page:
+  heading: Create an Account
+  username_label: Username
+  password_label: Password
+  sign_up_button: Sign up
+  welcome_message: " "
+  slogan: " "
+  title: "Registration"
+  description: "Enter your credentials here to create an account"
+  confirm_password: "Confirm password"
+  password: "Password"
