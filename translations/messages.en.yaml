@@ -25,12 +25,38 @@ home_header:
     copyright: © %year% UIECC. All rights reserved.
 home_body:
   hero_section:
-    welcome: "Bienvenue à Université Inter-états Congo-Cameroun"
-    sub-text1: "Un pôle"
-    sub-text2: "d'excellence scientifique"
-    sub-text3: "et technologique au cœur de l'Afrique Centrale."
+    welcome: "Welcome to the Congo-Cameroon Inter-state University"
+    welcome_sub-text: "Welcome to the Congo-Cameroon Inter-state University"
+    sub-text1: "Un pole"
+    sub-text2: "d'Excellence Scientifique et Technologique"
+    sub-text3: "au coeur de l'Afrique Centrale."
+    sub-text4: ""
     register: Register now
     login: Login
+    slogan1: "This is the"
+    slogan: "Registration Platform"
+    slogan2: "click below to get started"
+
+about_section:
+    title: "About Us"
+    description: "This school issues the Master of Engineering, recruits secondary education graduates aged 24 years at most through a competitive entrance examination and a selective direct entrance scheme."
+    see_more: "See more"
+    see_less: "See less"
+    prospectus_title: "Prospectus of the university"
+    prospectus_description: "The Sangmelima International Advanced School of Digital Engineering is at the forefront of tech education. We train tomorrow's leaders with an innovative program combining theory and practice, preparing our students to excel in the ever-changing digital industry. Find out more about our full range of training courses by downloading our prospectus below."
+    download_prospectus: "Download the prospectus"
+    arrete_title: "Competition decree"
+    arrete_description: "The competitive entrance exam for the Sangmelima International Advanced School of Digital Engineering is a unique opportunity for future digital talents. This official document details the competition procedures, important dates, subjects assessed and selection criteria. Make sure you're well prepared by downloading the official document below."
+    download_arrete: "Download the competition decree"
+
+
+faq:
+    title: "Foire aux questions (FAQ)"
+    description: "Ci dessous vous aurez les questions fréquemment posées, n'hésitez pas à vérifier au cas où."
+    question1: "Et si j'ai validé sans télécharger la fiche d'inscription?"
+    answer1: "N'ayez crainte puisque vous avez déjà un compte. Connectez-vous à votre compte et cela vous ramènera vers la page de téléchargement de la fiche. Vous verrez le bouton 'Télécharger la fiche'."
+    question2: "Je ne sais pas comment naviguer le site d'inscription?"
+    answer2: "Vous devez pour un premier temps créer un compte sur le site, ensuite entrer les informations sur votre transaction bancaire pour le concours et remplir les détails demandées."
 
 
 login_page:

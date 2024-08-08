@@ -2,8 +2,8 @@
 {% block title %}Accueil
 {% endblock %}
 {% block body %}
-	<style>:root
-	{
+<style>
+	:root {
 		--navbar-height: 0;
 	}
 
@@ -12,7 +12,8 @@
 		background-size: cover;
 		background-position: center;
 		border-radius: 10%;
-		height: 100%; /* Adjust the size of the blurred image */
+		height: 100%;
+		/* Adjust the size of the blurred image */
 	}
 
 	.hero-section {
@@ -56,224 +57,282 @@
 	}
 
 	.faq-item.active .faq-answer {
-		max-height: 500px; /* Adjust as needed */
+		max-height: 500px;
+		/* Adjust as needed */
+	}
+
+	.truncate {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 </style>
 
 {# Ajoutez ici le contenu de votre page d'accueil #}
 <div class="bg-background dark:bg-background text-text dark:text-text overflow-hidden hero-section">
-	<div
-		class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
+	<div class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
 		<!-- Left side content -->
 		<div class="flex flex-col justify-center items-start p-6 lg:w-1/2 max-w-2xl " id="hero-section">
 			<div class="absolute inset-0 -z-10 overflow-hidden">
-				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
+				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]"
+					aria-hidden="true">
 					<defs>
-						<pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternunits="userSpaceOnUse">
-							<path d="M100 200V.5M.5 .5H200" fill="none"/>
+						<pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1"
+							patternunits="userSpaceOnUse">
+							<path d="M100 200V.5M.5 .5H200" fill="none" />
 						</pattern>
 					</defs>
 					<svg x="50%" y="-1" class="overflow-visible fill-gray-50">
-						<path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0"/>
+						<path
+							d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z"
+							stroke-width="0" />
 					</svg>
-					<rect width="100%" height="100%" stroke-width="0" fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)"/>
+					<rect width="100%" height="100%" stroke-width="0"
+						fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" />
 				</svg>
 			</div>
-			<h1 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-3">
+			<h1 class="text-4xl lg:text-4xl xl:text-5xl font-bold mb-2">
 				{{ "home_body.hero_section.welcome" | trans }}
-			</h1>
-			<p class="text-base lg:text-lg mb-6">
+			  </h1>
+			  <p class="text-base sm:text-md lg:text-lg mb-16">
+				<span class="">{{ "home_body.hero_section.sub-text4" | trans }}</span>
 				{{ "home_body.hero_section.sub-text1" | trans }}
-				<span class="text-main-green font-semibold">{{
-					"home_body.hero_section.sub-text2" | trans
-					}}</span>
+				<span class="text-main-green font-normal">{{ "home_body.hero_section.sub-text2" | trans }}</span>
 				{{ "home_body.hero_section.sub-text3" | trans }}
-			</p>
-			<div class="flex space-x-8">
-				<a href="{{path('app_register')}}" class="bg-main-green text-white px-10 py-3 font-semibold rounded-lg text-base hover:scale-105 transition duration-75">
+			  </p>
+			  <p class="text-base sm:text-lg lg:text-xl font-bold mb-6">
+				<span class="font-medium">{{ "home_body.hero_section.slogan1" | trans }} </span>
+				<span class="text-main-green">{{ "home_body.hero_section.slogan" | trans }} </span>
+				<span class="font-medium">{{ "home_body.hero_section.slogan2" | trans }} </span>
+			  </p>
+
+			<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+				<a href="{{ path('app_register') }}"
+					class="bg-main-green text-white px-10 py-3 font-semibold rounded-lg text-base hover:scale-105 transition duration-75">
 					{{ "home_body.hero_section.register" | trans }}
 				</a>
-				<a href="{{path('app_login')}}" class="flex items-center text-main-green px-12 py-3 font-semibold rounded-lg border border-secondary-green hover:border-main-green text-base hover:scale-105 transition duration-75">
+				<a href="{{ path('app_login') }}"
+					class="flex items-center text-main-green px-12 py-3 font-semibold rounded-lg border border-secondary-green hover:border-main-green text-base hover:scale-105 transition duration-75">
 					{{ "home_body.hero_section.login" | trans }}
 					<span class="ml-2">→</span>
 				</a>
 			</div>
-
 		</div>
 		<!-- Right side with blurred background and logo -->
-		<div
-			class=" h-[700px] w-[600px] relative overflow-hidden ">
+		<div class="h-64 w-full lg:h-[700px] lg:w-[600px] relative overflow-hidden hidden xl:block">
 			<!-- Blurred background -->
 			<div class="absolute inset-0 blurred-bg filter blur-[2px] "></div>
 			<!-- White circle with logo -->
-			<div class="absolute inset-0 flex justify-center items-center">
+			<div class="absolute inset-0 flex justify-center items-center ">
 				<div class="bg-white rounded-2xl p-4 shadow-lg mx-auto ">
-					<img src="images/uiecc_logo.png" alt="UIECC Logo" class="w-32 h-32 lg:w-56 lg:h-56 object-contain "/>
+					<img src="images/uiecc_logo.png" alt="UIECC Logo"
+						class="w-32 h-32 lg:w-56 lg:h-56 object-contain " />
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+
 <!-- Second section of the home page  -->
 
-<section class="bg-green-50 p-16 w-full h-full mt-16 " id="about-section">
-	<div class="container mx-auto px-6">
-		<div class="flex items-center mb-4">
-			<h2 class="text-5xl font-bold text-gray-800">A propos</h2>
-			<img src="icons/info.svg" alt="Info Icon" class="w-10 h-10 ml-4"/>
+<section class="bg-green-50 p-8 sm:mt-10 lg:p-24 w-full h-full mt-16" id="about-section">
+	<div class="container mx-auto">
+		<div class="flex sm:flex-row lg:flex-row items-center mb-4">
+			<h2 class="text-3xl lg:text-5xl font-bold text-gray-800">{{ 'about_section.title'|trans }}</h2>
+			<img src="icons/info.svg" alt="Info Icon" class="w-10 h-10 lg:w-16 lg:h-16 ml-4" />
 		</div>
-		<p class="text-gray-600 font-medium	 mb-8 w-1/2">
-			This school issues the Master of Engineering/Diplome d'Ingenieur, recruits
-			secondary education graduates aged 24 years at most through a competitive 
-			entrance examination and a selective direct entrance scheme.
+		<p class="text-gray-600 font-medium mb-8 w-full lg:w-1/2 "> {# truncate #}
+			{{ 'about_section.description'|trans }}
 		</p>
+		{# <button class="see-more-btn text-main-green hover:text-hover-green">{{ 'about_section.see_more'|trans
+			}}</button> #}
 
-		<div class="flex flex-col md:flex-row md:space-x-4 mb-8">
-			<div class="bg-white p-6 rounded-lg shadow-md mb-4 md:mb-0 flex-1 text-start justify-start">
-				<img src="icons/open_book.svg" alt="Prospectus Icon" class="w-16 h-16 mb-4"/>
-				<h3 class="text-xl font-bold text-gray-800 mb-4">
-					Prospectus of the university
+		<div class="flex flex-col lg:flex-row lg:space-x-4 mb-8">
+			<div class="bg-white p-8 lg:p-16 rounded-lg shadow-md mb-4 lg:mb-0 flex-1 text-start">
+				<img src="icons/open_book.svg" alt="Prospectus Icon" class="w-12 h-12 lg:w-16 lg:h-16 mb-4" />
+				<h3 class="text-lg lg:text-xl font-bold text-gray-800 mb-4">{{ 'about_section.prospectus_title'|trans }}
 				</h3>
-				<p class="text-gray-600 mb-6">
-					 L'École Supérieure Internationale du Genie Numérique de Sangmelima est à l'avant-garde de l'éducation technologique.
-					Nous formons les leaders de demain avec un programme innovant combinant
-					théorie et pratique, préparant nos étudiants à exceller dans l'industrie numérique en constante évolution.
-					 Découvrez notre offre complète de formation en téléchargeant notre prospectus ci-dessous.
+				<p class="text-gray-600 mb-6 "> {# truncate #}
+					{{ 'about_section.prospectus_description'|trans }}
 				</p>
+				{# <button class="see-more-btn text-main-green hover:text-hover-green">{{ 'about_section.see_more'|trans
+					}}</button> #}
 				<a href="pdf/ESIGN_Prospectus.pdf" download="ESIGN_Prospectus.pdf">
-				<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
-					Télécharger le prospectus
-				</button>
+					<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
+						{{ 'about_section.download_prospectus'|trans }}
+					</button>
 				</a>
 			</div>
 
-			<div class="bg-white p-6 rounded-lg shadow-md flex-1 text-start justify-center">
-				<img src="icons/signature.svg" alt="Arrete Icon" class="w-16 h-16 mb-4"/>
-				<h3 class="text-xl font-bold text-gray-800 mb-4">Arrete du Concours</h3>
-				<p class="text-gray-600 mb-10">
-					Le concours d'entrée à l'École Supérieure Internationale du Genie Numérique de Sangmelima est une opportunité unique pour
-					les futurs talents du digital. Ce document officiel détaille les modalités du concours,
-					les dates importantes, les matières évaluées et les critères de sélection.
-					Assurez-vous d'être bien préparé en téléchargeant l'arrêté officiel du concours ci-dessous.
+			<div class="bg-white p-8 lg:p-16 rounded-lg shadow-md flex-1 text-start">
+				<img src="icons/signature.svg" alt="Arrete Icon" class="w-12 h-12 lg:w-16 lg:h-16 mb-4" />
+				<h3 class="text-lg lg:text-xl font-bold text-gray-800 mb-4">{{ 'about_section.arrete_title'|trans }}
+				</h3>
+				<p class="text-gray-600 mb-10 "> {# truncate #}
+					{{ 'about_section.arrete_description'|trans }}
 				</p>
+				{# <button class="see-more-btn text-main-green hover:text-hover-green">{{ 'about_section.see_more'|trans
+					}}</button> #}
 				<a href="pdf/ESIGN_Prospectus.pdf" download="ESIGN_Prospectus.pdf">
-				<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
-					Télécharger l'arrêté
-				</button>
+					<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
+						{{ 'about_section.download_arrete'|trans }}
+					</button>
 				</a>
 			</div>
 		</div>
-
-		{# <div class="text-center">
-			<img src="icons/info.svg" alt="Additional Image" class="mx-auto rounded-lg"/>
-		</div> #}
 	</div>
 </section>
 
+
 <!-- Third section of the home page  -->
 
+
 <!-- FAQ Section -->
-<section class="bg-white py-10" id="faq-section">
-    <div class="container mx-auto px-6">
-       <div class="flex justify-between items-center mb-4">
-            <h2 class="text-3xl font-bold text-gray-800">Foire aux questions (FAQ)</h2>
-            <img src="icons/help.svg" alt="FAQ Icon" class="w-56 h-56"/>
-        </div>
-        <p class="text-gray-600 mb-8">
-            Ci dessous vous aurez les questions fréquemment posées, n'hésitez pas à vérifier au cas où.
-        </p>
+<section class="bg-white py-10 lg:p-24" id="faq-section">
+	<div class="container mx-auto px-6">
+		<div class="flex sm:flex-row lg:flex-row items-center mb-4">
+			<h2 class="text-3xl lg:text-5xl font-bold text-gray-800">{{ 'faq.title' | trans }}</h2>
+			<img src="{{ asset('icons/help.svg') }}" alt="help Icon" class="w-14 h-14 lg:w-20 lg:h-20 ml-2" />
+		</div>
+		<p class="text-gray-600 font-medium mb-8 w-full lg:w-1/2">
+			{{ 'faq.description' | trans }}
+		</p>
+		<div class="flex flex-col space-y-4">
+			<div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
+				<div class="flex justify-between items-center cursor-pointer faq-header">
+					<h3 class="text-lg font-semibold">{{ 'faq.question1' | trans }}</h3>
+					<button class="text-white text-2xl faq-toggle">+</button>
+				</div>
+				<div class="faq-answer bg-white text-gray-800 pb-2 pt-2 px-8 sm:py-5  rounded-lg mt-2 shadow-md hidden">
+					<p class="">{{ 'faq.answer1' | trans }}</p>
+				</div>
+			</div>
+			<div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
+				<div class="flex justify-between items-center cursor-pointer faq-header">
+					<h3 class="text-lg font-semibold">{{ 'faq.question2' | trans }}</h3>
+					<button class="text-white text-2xl faq-toggle">+</button>
+				</div>
+				<div class="h-full faq-answer bg-white text-gray-800 pt-2 px-8 sm:py-10  rounded-lg mt-2 shadow-md hidden">
+					<p class="mb-4">{{ 'faq.answer2' | trans }}</p>
+				</div>
+			</div>
 
-        <div class="flex flex-col space-y-4">
-            <div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <h3 class="text-lg font-semibold">Et si j'ai validé sans télécharger la fiche d'inscription?</h3>
-                    <button class="text-white text-2xl faq-toggle">+</button>
-                </div>
-                <div class="faq-answer">
-                    <p class="text-white mt-2">
-                        N'ayez crainte puisque vous avez déjà un compte. Connectez-vous à votre compte et cela vous ramènera vers la page de téléchargement de la fiche. Vous verrez le bouton "Télécharger fiche".
-                    </p>
-                </div>
-            </div>
-
-            <div class="faq-item bg-main-green text-white p-4 rounded-lg shadow-md">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <h3 class="text-lg font-semibold">Je ne sais pas comment naviguer le site d'inscription?</h3>
-                    <button class="text-white text-2xl faq-toggle">+</button>
-                </div>
-                <div class="faq-answer">
-                    <p class="text-white mt-2">
-                        Vous devez pour un premier temps créer un compte sur le site, ensuite entrer les informations sur votre transaction bancaire pour le concours et remplir les détails demandées.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Add more FAQ items as needed -->
-        </div>
-    </div>
+			<!-- Add more FAQ items as needed -->
+		</div>
+	</div>
 </section>
 
+
+
 <script>
-    // Navbar height adjustment
-    function setNavbarHeight() {
-        const navbar = document.querySelector("header");
-        const navbarHeight = navbar.offsetHeight;
-        document.documentElement.style.setProperty("--navbar-height", `${navbarHeight}px`);
-        document.body.style.paddingTop = `${navbarHeight}px`;
-    }
+	// Navbar height adjustment
+	function setNavbarHeight() {
+		const navbar = document.querySelector("header");
+		const navbarHeight = navbar.offsetHeight;
+		document.documentElement.style.setProperty("--navbar-height", `${navbarHeight}px`);
+		document.body.style.paddingTop = `${navbarHeight}px`;
+	}
 
-    window.addEventListener("load", setNavbarHeight);
-    window.addEventListener("resize", setNavbarHeight);
+	window.addEventListener("load", setNavbarHeight);
+	window.addEventListener("resize", setNavbarHeight);
 
-    // Sprinkles effect
-    function createSprinkle(x, y) {
-        const sprinkle = document.createElement('div');
-        sprinkle.className = 'sprinkle';
-        sprinkle.style.left = `${x}px`;
-        sprinkle.style.top = `${y}px`;
-        sprinkle.style.width = `${Math.random() * 10 + 5}px`;
-        sprinkle.style.height = sprinkle.style.width;
-        document.body.appendChild(sprinkle);
+	// Sprinkles effect
+	function createSprinkle(x, y) {
+		const sprinkle = document.createElement('div');
+		sprinkle.className = 'sprinkle';
+		sprinkle.style.left = `${x}px`;
+		sprinkle.style.top = `${y}px`;
+		sprinkle.style.width = `${Math.random() * 10 + 10
+			}px`;
+		sprinkle.style.height = sprinkle.style.width;
+		document.body.appendChild(sprinkle);
 
-        setTimeout(() => {
-            sprinkle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px)`;
-            sprinkle.style.opacity = '0';
-        }, 50);
+		setTimeout(() => {
+			sprinkle.style.transform = `translate(${(Math.random() - 0.5) * 100
+				}px, ${(Math.random() - 0.5) * 100
+				}px)`;
+			sprinkle.style.opacity = '0';
+		}, 50);
 
-        setTimeout(() => {
-            document.body.removeChild(sprinkle);
-        }, 350);
-    }
+		setTimeout(() => {
+			document.body.removeChild(sprinkle);
+		}, 350);
+	}
 
-    document.addEventListener('mousemove', (e) => {
-        if (Math.random() < 0.1) {
-            createSprinkle(e.clientX, e.clientY);
-        }
-    });
+	document.addEventListener('mousemove', (e) => {
+		if (Math.random() < 0.1) {
+			createSprinkle(e.clientX, e.clientY);
+		}
+	});
 
-    // Section transitions
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
+	// Section transitions
+	const sections = document.querySelectorAll('section');
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('visible');
+			}
+		});
+	}, { threshold: 0.1 });
 
-    sections.forEach(section => {
-        observer.observe(section);
-    });
+	sections.forEach(section => {
+		observer.observe(section);
+	});
 
-    // FAQ dropdown
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const toggle = item.querySelector('.faq-toggle');
-        toggle.addEventListener('click', () => {
-            item.classList.toggle('active');
-            toggle.textContent = item.classList.contains('active') ? '-' : '+';
-        });
-    });
-</script>
-{% endblock %}
+	// FAQ dropdown
+	const faqItems = document.querySelectorAll('.faq-item');
+	faqItems.forEach(item => {
+		const toggle = item.querySelector('.faq-toggle');
+		toggle.addEventListener('click', () => {
+			item.classList.toggle('active');
+			toggle.textContent = item.classList.contains('active') ? '-' : '+';
+		});
+	});
+
+	document.addEventListener('DOMContentLoaded', function () {
+		const seeMoreButtons = document.querySelectorAll('.see-more-btn');
+
+		seeMoreButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const paragraph = button.previousElementSibling;
+				paragraph.classList.toggle('truncate');
+				button.textContent = paragraph.classList.contains('truncate') ? "{{ 'about_section.see_more'|trans }}" : "{{ 'about_section.see_less'|trans }}";
+			});
+		});
+	});
+
+	document.querySelectorAll('.faq-header').forEach(header => {
+		header.addEventListener('click', () => {
+			const answer = header.nextElementSibling;
+			const toggle = header.querySelector('.faq-toggle');
+
+			answer.classList.toggle('hidden');
+			toggle.textContent = answer.classList.contains('hidden') ? '+' : '-';
+		});
+	});
+	document.addEventListener('DOMContentLoaded', () => {
+		document.querySelectorAll('.faq-header').forEach(header => {
+			header.addEventListener('click', () => {
+				const answer = header.nextElementSibling;
+				const toggle = header.querySelector('.faq-toggle');
+
+				document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+					if (otherAnswer !== answer) {
+						otherAnswer.style.maxHeight = '0';
+						otherAnswer.previousElementSibling.querySelector('.faq-toggle').textContent = '+';
+					}
+				});
+
+				if (answer.style.maxHeight && answer.style.maxHeight !== '0px') {
+					answer.style.maxHeight = '0';
+					toggle.textContent = '+';
+				} else {
+					answer.style.maxHeight = answer.scrollHeight + 'px';
+					toggle.textContent = '-';
+				}
+			});
+		});
+	});
+
+</script>{% endblock %}

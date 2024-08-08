@@ -19,15 +19,17 @@
 	<body class="bg-background dark:bg-background text-text dark:text-text">
 		<header class="bg-bg-white dark:bg-background text-text dark:text-text fixed top-0 left-0 right-0 z-50">
 			<nav
-				class="container mx-auto px-12 pt-5 pb-2 flex items-center justify-between  ">
+				class="container mx-auto px-4 py-5 flex items-center justify-between flex-wrap w-full">
 				<!-- Logo -->
+
 				<a href="{{path('app_home')}}" class="flex items-center text-main-green">
-					<img id="logo-light" class="h-16 w-auto" src="{{ asset('images/uiecc_logo.png') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
-					<img id="logo-dark" class="h-16 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+					<img id="logo-light" class="h-8 md:h-16 w-auto" src="{{ asset('images/uiecc_logo.png') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+					<img id="logo-dark" class="h-8 md:h-16 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 				</a>
 
+
 				<!-- Navigation Links - Hidden on mobile -->
-				<div class="hidden md:flex space-x-20">
+				<div class="hidden md:flex space-x-4 md:space-x-20">
 					<a href="{{path('app_home')}}" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.home'|trans }}</a>
 					<a href="{{ path('app_home') }}#about-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.about'|trans }}</a>
 					<a href="{{ path('app_home') }}#faq-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.faq'|trans }}</a>
@@ -35,11 +37,11 @@
 
 				<!-- Right side elements -->
 				<div
-					class="flex items-center space-x-4">
+					class="flex items-center space-x-4 md:space-x-6">
 					<!-- Login and Register buttons - Hidden on mobile -->
 					<div class="hidden md:flex space-x-4">
-						<a href="{{path('app_login')}}" class="text-main-green bg-white border border-main-green rounded-md px-10 py-3 font-semibold hover:scale-105 transition-transform duration-75">{{ 'home_header.nav.login'|trans }}</a>
-						<a href="{{path('app_register')}}" class="text-white bg-main-green rounded-md px-10 py-3 font-semibold hover:scale-105 transition-transform duration-75">{{ 'home_header.nav.register'|trans }}</a>
+						<a href="{{path('app_login')}}" class="text-main-green bg-white border border-main-green rounded-md px-5 md:px-10 py-2 md:py-3 font-semibold hover:scale-105 transition-transform duration-75">{{ 'home_header.nav.login'|trans }}</a>
+						<a href="{{path('app_register')}}" class="text-white bg-main-green rounded-md px-5 md:px-10 py-2 md:py-3 font-semibold hover:scale-105 transition-transform duration-75">{{ 'home_header.nav.register'|trans }}</a>
 					</div>
 
 					<!-- Dropdown menu -->
@@ -71,8 +73,8 @@
 			</nav>
 
 			<!-- Mobile menu -->
-			<div class="hidden md:hidden" id="mobile-menu">
-				<div class="px-2 pt-2 pb-3 space-y-1">
+			<div class="hidden md:hidden w-full" id="mobile-menu">
+				<div class="px-2 pt-2 pb-3 space-y-1 flex flex-col items-start">
 					<a href="{{ path('app_home') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.home'|trans }}</a>
 					<a href="{{ path('app_home') }}#about-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.about'|trans }}</a>
 					<a href="{{ path('app_home') }}#faq-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.faq'|trans }}</a>
@@ -111,78 +113,80 @@
 			{% endblock %}
 			<script>
 				// JavaScript for mobile menu toggle, theme toggle, and language toggle
-                    document.addEventListener('DOMContentLoaded', function () {
-                    const mobileMenuButton = document.getElementById('mobile-menu-button');
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    const optionsMenu = document.getElementById('options-menu');
-                    const dropdownMenu = document.getElementById('dropdown-menu');
-                    const themeToggle = document.getElementById('theme-toggle');
-                    const languageToggle = document.getElementById('language-toggle');
-                    const themeText = document.getElementById('theme-text');
-                    const languageText = document.getElementById('language-text');
+	document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const optionsMenu = document.getElementById('options-menu');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const themeToggle = document.getElementById('theme-toggle');
+    const languageToggle = document.getElementById('language-toggle');
+    const themeText = document.getElementById('theme-text');
+    const languageText = document.getElementById('language-text');
 
-                    // Mobile menu toggle
-                    mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    });
+    // Mobile menu toggle
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
 
-                    // Dropdown menu toggle
-                    optionsMenu.addEventListener('click', () => {
-                    dropdownMenu.classList.toggle('hidden');
-                    });
-                     // Close dropdown when clicking outside
-                    document.addEventListener('click', (event) => {
-                        if (!dropdownMenu.contains(event.target) && !optionsMenu.contains(event.target)) {
-                            dropdownMenu.classList.add('hidden');
-                        }
-                    });
+    // Dropdown menu toggle
+    optionsMenu.addEventListener('click', () => {
+        dropdownMenu.classList.toggle('hidden');
+    });
 
-                    // Theme toggle
-                    themeToggle.addEventListener('click', () => {
-                    document.documentElement.classList.toggle('dark');
-                    const isDark = document.documentElement.classList.contains('dark');
-                    themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
-                    setTheme(isDark);
-                    });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!dropdownMenu.contains(event.target) && !optionsMenu.contains(event.target)) {
+            dropdownMenu.classList.add('hidden');
+        }
+    });
 
-                    // Language toggle
-                    languageToggle.addEventListener('click', () => {
-                    const currentLang = languageText.textContent;
-                    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-                    languageText.textContent = newLang;
-                    // Here you would typically redirect to change the language
-                    // window.location.href = "{{ path('change_language', {'locale': 'LANG'}) }}".replace('LANG', newLang.toLowerCase());
-                    });
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
+        setTheme(isDark);
+    });
 
-                    // Theme setting function
-                    function setTheme(isDark) {
-                    const logoLight = document.getElementById('logo-light');
-                    const logoDark = document.getElementById('logo-dark');
-                    const footerLogoLight = document.getElementById('footer-logo-light');
-                    const footerLogoDark = document.getElementById('footer-logo-dark');
+    // Language toggle
+    languageToggle.addEventListener('click', () => {
+        const currentLang = languageText.textContent;
+        const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+        languageText.textContent = newLang;
+        // Here you would typically redirect to change the language
+        // window.location.href = "{{ path('change_language', {'locale': 'LANG'}) }}".replace('LANG', newLang.toLowerCase());
+    });
 
-                    if (isDark) {
-                    logoLight.classList.add('hidden');
-                    logoDark.classList.remove('hidden');
-                    footerLogoLight.classList.add('hidden');
-                    footerLogoDark.classList.remove('hidden');
-                    } else {
-                    logoLight.classList.remove('hidden');
-                    logoDark.classList.add('hidden');
-                    footerLogoLight.classList.remove('hidden');
-                    footerLogoDark.classList.add('hidden');
-                    }
-                    }
+    // Theme setting function
+    function setTheme(isDark) {
+        const logoLight = document.getElementById('logo-light');
+        const logoDark = document.getElementById('logo-dark');
+        const footerLogoLight = document.getElementById('footer-logo-light');
+        const footerLogoDark = document.getElementById('footer-logo-dark');
 
-                    // Initialize theme based on system preference or previous setting
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    const storedTheme = localStorage.getItem('color-theme');
-                    if (storedTheme === 'dark' || (! storedTheme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                    themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
-                    setTheme(true);
-                    }
-                    });
+        if (isDark) {
+            logoLight.classList.add('hidden');
+            logoDark.classList.remove('hidden');
+            footerLogoLight.classList.add('hidden');
+            footerLogoDark.classList.remove('hidden');
+        } else {
+            logoLight.classList.remove('hidden');
+            logoDark.classList.add('hidden');
+            footerLogoLight.classList.remove('hidden');
+            footerLogoDark.classList.add('hidden');
+        }
+    }
+
+    // Initialize theme based on system preference or previous setting
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('color-theme');
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+        themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
+        setTheme(true);
+    }
+});
+
 			</script>
 		</body>
 	</html>

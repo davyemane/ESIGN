@@ -53,3 +53,17 @@ registration_page:
   description: "Entrez vos identifiants ici pour créer un compte"
   confirm_password: "Confirmer le mot de passe"
   password: "Mot de passe"
+
+
+about_section:
+    title: "A propos"
+    description: "Cette école, qui délivre le diplome d'ingenieur, recrute des diplômés de l'enseignement secondaire âgés de 24 ans au plus par le biais d'un concours d'entrée et d'un système sélectif d'admission directe."
+    see_more: "Voir plus"
+    see_less: "Voir moins"
+    prospectus_title: "Prospectus de l'université"
+    prospectus_description: "L'École Supérieure Internationale du Genie Numérique de Sangmelima est à l'avant-garde de l'éducation technologique. Nous formons les leaders de demain avec un programme innovant combinant théorie et pratique, préparant nos étudiants à exceller dans l'industrie numérique en constante évolution. Découvrez notre offre complète de formation en téléchargeant notre prospectus ci-dessous."
+    download_prospectus: "Télécharger le prospectus"
+    arrete_title: "Arrêté du Concours"
+    arrete_description: "Le concours d'entrée à l'École Supérieure Internationale du Genie Numérique de Sangmelima est une opportunité unique pour les futurs talents du digital. Ce document officiel détaille les modalités du concours, les dates importantes, les matières évaluées et les critères de sélection. Assurez-vous d'être bien préparé en téléchargeant l'arrêté officiel du concours ci-dessous."
+    download_arrete: "Télécharger l'arrêté"
+
