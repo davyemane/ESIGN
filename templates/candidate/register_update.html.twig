@@ -1,24 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_login.html.twig' %}
 
 {% block title %}{{ candidate.id ? 'Mettre à jour' : 'Inscription' }} du candidat{% endblock %}
 
 {% block body %}
-<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
-    <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
-      <div class="max-w-md mx-auto">
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12 mt-16">
+  <div class="relative py-3 sm:max-w-5xl sm:mx-auto">
+    <div class="relative px-4 py-10 mx-8 md:mx-0  sm:p-10">
+      <div class="max-w-5xl w-full bg-white shadow-md rounded-lg py-2 px-8 mx-auto">
         <div class="flex items-center space-x-5">
-          <div class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">i</div>
-          <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
-            <h2 class="leading-relaxed">{{ candidate.id ? 'Mettre à jour vos informations' : 'Inscription du candidat' }}</h2>
-            <p class="text-sm text-gray-500 font-normal leading-relaxed">Remplissez le formulaire ci-dessous pour {{ candidate.id ? 'mettre à jour vos informations' : 'vous inscrire' }}.</p>
+          <div class="block pl-2 font-semibold self-start text-center text-gray-700">
+            <h2 class="text-4xl font-bold text-center mt-8">{{ candidate.id ? 'Mettre à jour vos informations' : 'Inscription du candidat' | trans }}</h2>
+            <p class="text-sm  text-gray-500 font-normal leading-relaxed">{{ 'candidate_form.description' | trans }}</p>
           </div>
         </div>
         
         {# Affichage des messages flash #}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
-                <div class="bg-{{ label == 'error' ? 'red' : 'green' }}-100 border border-{{ label == 'error' ? 'red' : 'green' }}-400 text-{{ label == 'error' ? 'red' : 'green' }}-700 px-4 py-3 rounded relative mb-4" role="alert">
+                <div class="bg-{{ label == 'error' ? 'red' : 'green' }}-100 border border-{{ label == 'error' ? 'red' : 'green' }}-400 text-{{ label == 'error' ? 'red' : 'green' }}-700 px-4 py-3 rounded relative mb-4 alert" role="alert">
                     <span class="block sm:inline">{{ message }}</span>
                 </div>
             {% endfor %}
@@ -30,52 +29,93 @@
               
               {# Étape 1: Informations de paiement #}
               <div id="step1" class="form-step">
-                <h3 class="text-lg font-medium mb-4">Étape 1: Informations de paiement</h3>
+                <h3 class="text-lg font-medium mb-4">{{ 'candidate_form.step1_title' | trans }}</h3>
                 <div class="mb-4">
-                    {{ form_label(form.transactionNumber, 'Numéro de transaction', {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
-                    {{ form_widget(form.transactionNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
+                    {{ form_label(form.transactionNumber, 'candidate_form.transaction_number' | trans, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                    {{ form_widget(form.transactionNumber, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600', 'placeholder': 'candidate_form.transaction_number_placeholder' | trans}}) }}
                     {{ form_errors(form.transactionNumber, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
                 </div>
                 <div class="mb-4">
-                    {{ form_label(form.payementReceipt, 'Reçu de paiement', {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                    {{ form_label(form.payementReceipt, 'candidate_form.payment_receipt' | trans, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
                     {{ form_widget(form.payementReceipt, {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
                     {{ form_errors(form.payementReceipt, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
                 </div>
-                <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
+                <div class="flex justify-between items-center">
+                    <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        {{ 'candidate_form.previous' | trans }}
+                    </button>
+                    <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        {{ 'candidate_form.next' | trans }}
+                        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
               </div>
 
               {# Étape 2: Informations personnelles #}
               <div id="step2" class="form-step hidden">
-                <h3 class="text-lg font-medium mb-4">Étape 2: Informations personnelles</h3>
+                <h3 class="text-lg font-medium mb-4">{{ 'candidate_form.step2_title' | trans }}</h3>
                 {% for field in ['name', 'sexe', 'dateOfBirth', 'placeOfBirth', 'nationality', 'cni', 'phoneNumber', 'email', 'photo'] %}
                     <div class="mb-4">
-                        {{ form_label(form[field], null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                        {{ form_label(form[field], ('candidate_form.'~field) | trans, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
                         {{ form_widget(form[field], {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
                         {{ form_errors(form[field], {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
                     </div>
                 {% endfor %}
-                <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
-                <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md mt-4">Suivant</button>
+                <div class="flex justify-between items-center">
+                    <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        {{ 'candidate_form.previous' | trans }}
+                    </button>
+                    <button type="button" class="next-step bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        {{ 'candidate_form.next' | trans }}
+                        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
               </div>
 
               {# Étape 3: Autres informations #}
               <div id="step3" class="form-step hidden">
-                <h3 class="text-lg font-medium mb-4">Étape 3: Autres informations</h3>
+                <h3 class="text-lg font-medium mb-4">{{ 'candidate_form.step3_title' | trans }}</h3>
                 {% for field in ['region', 'depertement', 'field', 'examinationCenter', 'certificate', 'certificateYear', 'language'] %}
                     <div class="mb-4">
-                        {{ form_label(form[field], null, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
+                        {{ form_label(form[field], ('candidate_form.'~field) | trans, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
                         {{ form_widget(form[field], {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}
                         {{ form_errors(form[field], {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
                     </div>
                 {% endfor %}
-                <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md mt-4 mr-2">Précédent</button>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md mt-4">{{ candidate.id ? 'Mettre à jour' : 'S\'inscrire' }}</button>
+                <div class="flex justify-between items-center">
+                    <button type="button" class="prev-step bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400">
+                        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                        {{ 'candidate_form.previous' | trans }}
+                    </button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        {{ candidate.id ? 'candidate_form.update' | trans : 'candidate_form.register' | trans }}
+                        <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
               </div>
 
-              <div class="pt-4 flex items-center space-x-4">
-                <button type="button" id="save-progress" class="bg-green-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none hover:bg-green-600">
-                  Sauvegarder la progression
-                </button>
+              <div class="flex justify-center items-center mt-6">
+                {# <div class="text-sm text-gray-500 mr-4">{{ 'candidate_form.step' | trans({'%current%': currentStep + 1, '%total%': 3}) }}</div>
+                <div class="flex space-x-2">
+                    <div class="w-8 h-2 bg-{{ currentStep >= 0 ? 'blue' : 'gray' }}-500 rounded-full"></div>
+                    <div class="w-8 h-2 bg-{{ currentStep >= 1 ? 'blue' : 'gray' }}-500 rounded-full"></div>
+                    <div class="w-8 h-2 bg-{{ currentStep >= 2 ? 'blue' : 'gray' }}-500 rounded-full"></div>
+                    <div class="w-8 h-2 bg-{{ currentStep >= 3 ? 'blue' : 'gray' }}-500 rounded-full"></div>
+                </div> #}
               </div>
             {{ form_end(form) }}
           </div>
@@ -102,6 +142,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 step.classList.add('hidden');
             }
         });
+        currentStep = stepIndex;
+        updateProgressBar();
     }
 
     function saveProgress() {
@@ -115,7 +157,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         data['currentStep'] = currentStep;
         
         document.cookie = `candidateFormProgress=${JSON.stringify(data)}; path=/; max-age=604800; SameSite=Strict; Secure`;
-        alert('Progression sauvegardée avec succès!');
+        showAlert('{{ 'candidate_form.progress_saved' | trans }}', 'success');
     }
 
     function loadProgress() {
@@ -137,19 +179,45 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     }
 
+    function showAlert(message, type) {
+        const alertDiv = document.createElement('div');
+        alertDiv.classList.add('alert', `bg-${type}-100`, `border-${type}-400`, `text-${type}-700`, 'px-4', 'py-3', 'rounded', 'relative', 'mb-4');
+        alertDiv.textContent = message;
+        form.insertAdjacentElement('beforebegin', alertDiv);
+        setTimeout(() => {
+            alertDiv.remove();
+        }, 1000);
+    }
+
+    function updateProgressBar() {
+        const progressBars = document.querySelectorAll('.flex.space-x-2 > div');
+        progressBars.forEach((bar, index) => {
+            bar.classList.remove('bg-blue-500');
+            bar.classList.add('bg-gray-500');
+        });
+        progressBars[currentStep].classList.remove('bg-gray-500');
+        progressBars[currentStep].classList.add('bg-blue-500');
+    }
+
     nextButtons.forEach(button => {
         button.addEventListener('click', () => {
-            currentStep++;
-            showStep(currentStep);
-            saveProgress();
+            if (currentStep < 2) {
+                currentStep++;
+                showStep(currentStep);
+                saveProgress();
+            } else {
+                form.submit();
+            }
         });
     });
 
     prevButtons.forEach(button => {
         button.addEventListener('click', () => {
-            currentStep--;
-            showStep(currentStep);
-            saveProgress();
+            if (currentStep > 0) {
+                currentStep--;
+                showStep(currentStep);
+                saveProgress();
+            }
         });
     });
 

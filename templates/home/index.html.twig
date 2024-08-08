@@ -93,18 +93,18 @@
 			</div>
 			<h1 class="text-4xl lg:text-4xl xl:text-5xl font-bold mb-2">
 				{{ "home_body.hero_section.welcome" | trans }}
-			  </h1>
-			  <p class="text-base sm:text-md lg:text-lg mb-16">
+			</h1>
+			<p class="text-base sm:text-md lg:text-lg mb-16">
 				<span class="">{{ "home_body.hero_section.sub-text4" | trans }}</span>
 				{{ "home_body.hero_section.sub-text1" | trans }}
 				<span class="text-main-green font-normal">{{ "home_body.hero_section.sub-text2" | trans }}</span>
 				{{ "home_body.hero_section.sub-text3" | trans }}
-			  </p>
-			  <p class="text-base sm:text-lg lg:text-xl font-bold mb-6">
+			</p>
+			<p class="text-base sm:text-lg lg:text-xl font-bold mb-6">
 				<span class="font-medium">{{ "home_body.hero_section.slogan1" | trans }} </span>
 				<span class="text-main-green">{{ "home_body.hero_section.slogan" | trans }} </span>
 				<span class="font-medium">{{ "home_body.hero_section.slogan2" | trans }} </span>
-			  </p>
+			</p>
 
 			<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
 				<a href="{{ path('app_register') }}"
@@ -131,14 +131,26 @@
 			</div>
 		</div>
 	</div>
+	<div
+		class="absolute bottom-2 left-[43%] transform -translate-x-1/2 flex flex-row space-x-4 -z-30 md:bottom-10 md:space-x-6 lg:bottom-20 lg:space-x-8">
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+	</div>
+	<div
+		class="absolute -bottom-[20%] left-[10%] transform -translate-x-1/2 flex flex-row space-x-4 z-10 md:-bottom-[15%] md:left-[8%] lg:-bottom-[10%] lg:left-[5%]">
+		<div class="bg-white rounded-full w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56"></div>
+	</div>
 </div>
 
 
 <!-- Second section of the home page  -->
 
-<section class="bg-green-50 p-8 sm:mt-10 lg:p-24 w-full h-full mt-16" id="about-section">
+<section class="bg-green-50 p-8 sm:mt-10 lg:p-24 w-full h-full mt-32" id="about-section">
 	<div class="container mx-auto">
-		<div class="flex sm:flex-row lg:flex-row items-center mb-4">
+		<div class="flex sm:flex-row lg:flex-row items-center mb-4 mt-14">
 			<h2 class="text-3xl lg:text-5xl font-bold text-gray-800">{{ 'about_section.title'|trans }}</h2>
 			<img src="icons/info.svg" alt="Info Icon" class="w-10 h-10 lg:w-16 lg:h-16 ml-4" />
 		</div>
@@ -182,6 +194,27 @@
 			</div>
 		</div>
 	</div>
+	<div
+		class="absolute top-[3%] left-[20%] flex flex-row space-x-4 z-10 md:top-[5%] md:left-[15%] lg:top-[8%] lg:left-[10%]">
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+	</div>
+	<div
+		class="absolute bottom-[3%] right-[25%] flex flex-row space-x-4 z-10 md:bottom-[5%] md:right-[20%] lg:bottom-[8%] lg:right-[15%]">
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+	</div>
+
+	<div
+		class="absolute -bottom-[15%] right-[1%] transform -translate-x-1/2 flex flex-row space-x-4 z-10 md:-bottom-[10%] md:right-[3%] lg:-bottom-[5%] lg:right-[5%]">
+		<div class="bg-white rounded-full w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56"></div>
+	</div>
 </section>
 
 
@@ -213,13 +246,29 @@
 					<h3 class="text-lg font-semibold">{{ 'faq.question2' | trans }}</h3>
 					<button class="text-white text-2xl faq-toggle">+</button>
 				</div>
-				<div class="h-full faq-answer bg-white text-gray-800 pt-2 px-8 sm:py-10  rounded-lg mt-2 shadow-md hidden">
+				<div
+					class="h-full faq-answer bg-white text-gray-800 pt-2 px-8 sm:py-10  rounded-lg mt-2 shadow-md hidden">
 					<p class="mb-4">{{ 'faq.answer2' | trans }}</p>
 				</div>
 			</div>
 
 			<!-- Add more FAQ items as needed -->
 		</div>
+	</div>
+	<div class="absolute top-[4%] left-[3%] flex flex-row space-x-4 z-10 md:top-[5%] md:left-[5%] lg:top-[8%] lg:left-[10%]">
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+	</div>
+	
+	<div class="absolute bottom-[4%] right-[3%] flex flex-row space-x-4 z-10 md:bottom-[5%] md:right-[5%] lg:bottom-[8%] lg:right-[10%]">
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
+		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
 	</div>
 </section>
 

@@ -1,3 +1,4 @@
+{# B
 {% extends 'base_login.html.twig' %}
 
 {% block body %}
@@ -114,4 +115,98 @@
 </script>
 
 {% endblock %}
+ #}
 
+{% extends 'base_login.html.twig' %}
+
+{% block body %}
+<div class="max-w-5xl mx-auto border border-black p-6 mt-24">
+    <div class="flex justify-between items-center">
+        <img src="{{ asset('images/cameroon.png') }}" alt="Cameroon Flag" class="h-14">
+        <img src="{{ asset('images/uiecc_logo.png') }}" alt="UIECC Logo" class="h-28">
+        <img src="{{ asset('images/congo.png') }}" alt="Congo Flag" class="h-14">
+    </div>
+    <div class="border-4 border-main-green rounded-2xl py-4 px-8 mt-4">
+        <div class="text-center mb-10">
+            <h2 class="text-sm font-bold">UNIVERSITE INTER-ETATS CAMEROUN-CONGO</h2>
+            <h3 class="text-2xl font-semibold">RECIPISSE DE DEPOT DE DOSSIER</h3>
+        </div>
+
+        <div class="mt-4 flex justify-between">
+            <div class="flex-1">
+                <div class="flex flex-col">
+                    <span class="font-light italic text-sm border-b w-2/3 border-gray-900">No Dossier:</span>
+                    <span class="text-red-600 font-semibold">CDT510741#1327</span>
+                </div>
+                <div class="flex flex-col mt-2">
+                    <span class="font-light italic text-sm border-b w-2/3 border-gray-900">Filiere choisie:</span>
+                    <span class="font-semibold">INGENIERIE DES SYSTEMES NUMERIQUES</span>
+                </div>
+                <div class="flex flex-col mt-2">
+                    <span class="font-light italic text-sm border-b w-2/3 border-gray-900">Session du concours:</span>
+                    <span class="font-semibold">2024</span>
+                </div>
+            </div>
+            <div class="w-40 h-40 border bg-gray-300 flex justify-center items-center">
+                <span>Photo(4x4)</span>
+            </div>
+        </div>
+
+        <div class="h-full" id="Informations_concours">
+    <div class="mt-10 bg-main-green text-white p-4 rounded-t-lg">
+        <h4 class="font-semibold text-center">INFORMATIONS SUR LE CONCOURS</h4>
+    </div>
+    <div class="px-6 py-10 border border-main-green h-full space-y-10">
+        <div class="flex justify-between space-x-10"> <!-- Added space-x-10 for horizontal spacing -->
+            <div class="flex-1 space-y-6 break-words"> <!-- Break-words to avoid overflow -->
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Nom et Prenoms:</span>
+                    <span class="font-semibold">EMANE BILE DAVY FELICIEN</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Date de naissance:</span>
+                    <span class="font-semibold">14/03/2002</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Nationalité:</span>
+                    <span class="font-semibold">CAMEROUN</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Centre d'Examen (Lieu de depot du dossier):</span>
+                    <span class="font-semibold">YAOUNDE</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Langue de Composition:</span>
+                    <span class="font-semibold">ANGLAIS</span>
+                </div>
+            </div>
+            <div class="flex-1 space-y-6 break-words"> <!-- Break-words to avoid overflow -->
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Sexe:</span>
+                    <span class="font-semibold">MASCULIN</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Lieu de naissance:</span>
+                    <span class="font-semibold">A Cote de Mvo'oméka</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-light italic text-xs border-b border-gray-900">Diplome presente | Serie:</span>
+                    <span class="font-semibold">BACCALAUREAT C</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="mt-12 flex flex-col items-end justify-end">
+            <div class="flex flex-col justify-end text-center items-center">
+                <span class="font-semibold text-xs">SIGNATURE DU RECEPTEUR</span>
+                <div class="w-56 h-28 border mt-2"></div>
+            </div>
+            <div class="text-right font-medium text-xs mt-12 italic">
+                <span>Imprimee le {{ "now"|date("d F Y, h:i a") }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

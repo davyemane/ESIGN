@@ -27,9 +27,9 @@ home_body:
   hero_section:
     welcome: "Welcome to the Congo-Cameroon Inter-state University"
     welcome_sub-text: "Welcome to the Congo-Cameroon Inter-state University"
-    sub-text1: "Un pole"
-    sub-text2: "d'Excellence Scientifique et Technologique"
-    sub-text3: "au coeur de l'Afrique Centrale."
+    sub-text1: "A center of"
+    sub-text2: "Scientific and Technological Excellence"
+    sub-text3: "in the heart of Central Africa."
     sub-text4: ""
     register: Register now
     login: Login
@@ -68,6 +68,12 @@ login_page:
   slogan: " "
   title: "Login"
   description: "Enter your credentials here to continue the registration"
+  logged_in_as: "You are logged in as %username%"
+  logout: "logout?"
+  forgot_password: "Forgot your password?"
+  username_placeholder: "Enter your username"
+  password_placeholder: "Enter your password"
+
 
 registration_page:
   heading: Create an Account
@@ -80,3 +86,43 @@ registration_page:
   description: "Enter your credentials here to create an account"
   confirm_password: "Confirm password"
   password: "Password"
+  username_placeholder: "Enter your username"
+  password_placeholder: "Enter your password"
+  confirm_password_placeholder: "Confirm your password"
+
+
+# src/Form/CandidateType.php
+candidate_form:
+  description: Remplissez le formulaire ci-dessous pour vous inscrire.
+  step1_title: 
+    Étape 1: Informations de paiement
+  transaction_number: Numéro de transaction
+  transaction_number_placeholder: Entrez votre numéro de transaction
+  payment_receipt: Reçu de paiement
+  step2_title: 
+    Étape 2: Informations personnelles
+  name: Nom
+  sexe: Sexe
+  dateOfBirth: Date de naissance
+  placeOfBirth: Lieu de naissance
+  nationality: Nationalité
+  cni: CNI
+  phoneNumber: Numéro de téléphone
+  email: Email
+  photo: Photo
+  step3_title: 
+    Étape 3: Autres informations
+  region: Région
+  depertement: Département
+  field: Domaine
+  examinationCenter: Centre d'examen
+  certificate: Certificat
+  certificateYear: Année du certificat
+  language: Langue
+  previous: Précédent
+  next: Suivant
+  save: Sauvegarder
+  update: Mettre à jour
+  register: S'inscrire
+  save_progress: Sauvegarder la progression
+  progress_saved: Progression sauvegardée avec succès!
