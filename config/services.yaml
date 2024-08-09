@@ -7,6 +7,7 @@ parameters:
     certificates_directory: '%kernel.project_dir%/public/uploads/certificates'
     payment_receipts_directory: '%kernel.project_dir%/public/uploads/receipts'
     photos_directory: '%kernel.project_dir%/public/uploads/photos'
+    locale: 'en'
 
 services:
             
@@ -26,3 +27,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    # config/services.yaml
+    App\Controller\ErrorController:
+        public: true
+        tags:
+            - { name: controller.service_arguments }
+
+    App\EventListener\LocaleListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+

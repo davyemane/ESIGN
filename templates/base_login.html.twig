@@ -22,15 +22,15 @@
 				class="container mx-auto px-12 pt-5 pb-2 flex items-center justify-between  ">
 				<!-- Logo -->
 				<a href="#" class="flex items-center text-main-green">
-					<img id="logo-light" class="h-16 w-auto" src="{{ asset('images/uiecc_logo.png') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+					<img id="logo-light" class="h-16 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 					<img id="logo-dark" class="h-16 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 				</a>
 
 				<!-- Navigation Links - Hidden on mobile -->
-				<div class="hidden md:flex space-x-20">
-					{# <a href="{{path('app_home')}}" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.home'|trans }}</a>
-					<a href="{{ path('app_home') }}#about-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.about'|trans }}</a>
-					<a href="{{ path('app_home') }}#faq-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.faq'|trans }}</a> #}
+				<div
+					class="hidden md:flex space-x-20">{# <a href="{{path('app_home')}}" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.home'|trans }}</a>
+																	<a href="{{ path('app_home') }}#about-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.about'|trans }}</a>
+																	<a href="{{ path('app_home') }}#faq-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.faq'|trans }}</a> #}
 				</div>
 
 				<!-- Right side elements -->
@@ -45,18 +45,20 @@
 					<!-- Dropdown menu -->
 					<div class="relative">
 						<button id="options-menu" class="text-main-green hover:text-hover-green focus:outline-none">
-							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
-							</svg>
+							<img src="icons/translation.svg" alt="Translation image" class="w-10 h-10">
 						</button>
 						<div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
 							<div class="py-1">
-								{# <button id="theme-toggle" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-									<span id="theme-text">{{ 'home_header.nav.toggle_dark_mode'|trans }}</span>
-								</button> #}
-								<button id="language-toggle" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-									<span id="language-text">{{ app.request.locale|upper }}</span>
-								</button>
+								<div class="py-1">
+									<ul>
+										<li class="ml-2 py-1 px-1">
+											<a href="{{ path('switch_language', {'locale': 'en'}) }}">{{ 'home_header.language.english'|trans }}</a>
+										</li>
+										<li class=" ml-2 py-1 px-1">
+											<a href="{{ path('switch_language', {'locale': 'fr'}) }}">{{ 'home_header.language.french'|trans }}</a>
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -72,12 +74,12 @@
 
 			<!-- Mobile menu -->
 			<div class="hidden md:hidden" id="mobile-menu">
-				<div class="px-2 pt-2 pb-3 space-y-1">
-					{# <a href="{{ path('app_home') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.home'|trans }}</a>
-					<a href="{{ path('app_home') }}#about-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.about'|trans }}</a>
-					<a href="{{ path('app_home') }}#faq-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.faq'|trans }}</a>
-					<a href="{{ path('app_login') }}" class=" nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.login'|trans }}</a>
-					<a href="{{ path('app_register') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.register'|trans }}</a> #}
+				<div
+					class="px-2 pt-2 pb-3 space-y-1">{# <a href="{{ path('app_home') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.home'|trans }}</a>
+																	<a href="{{ path('app_home') }}#about-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.about'|trans }}</a>
+																	<a href="{{ path('app_home') }}#faq-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.faq'|trans }}</a>
+																	<a href="{{ path('app_login') }}" class=" nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.login'|trans }}</a>
+																	<a href="{{ path('app_register') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.register'|trans }}</a> #}
 				</div>
 			</div>
 		</header>
@@ -88,19 +90,19 @@
 			<footer class="bg-background dark:bg-background text-text dark:text-text py-8">
 				<div class="container mx-auto px-12 flex flex-col md:flex-row items-center justify-between">
 					<a href="#" class="mb-4 md:mb-0">
-						<img id="footer-logo-light" class="h-12 w-auto" src="{{ asset('images/uiecc_logo.png') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+						<img id="footer-logo-light" class="h-12 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 						<img id="footer-logo-dark" class="h-12 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 					</a>
-					<ul class="flex space-x-20 mb-4 md:mb-0 text-main-green font-semibold">
-						{# <li>
-							<a href="{{ path('app_home') }}#hero-section" class="">{{ 'home_header.nav.home'|trans }}</a>
-						</li>
-						<li>
-							<a href="{{ path('app_home') }}#about-section" class="hover:text-secondary">{{ 'home_header.nav.about'|trans }}</a>
-						</li>
-						<li>
-							<a href="{{ path('app_home') }}#faq-section" class="hover:text-secondary">{{ 'home_header.nav.faq'|trans }}</a>
-						</li> #}
+					<ul
+						class="flex space-x-20 mb-4 md:mb-0 text-main-green font-semibold">{# <li>
+																					<a href="{{ path('app_home') }}#hero-section" class="">{{ 'home_header.nav.home'|trans }}</a>
+																				</li>
+																				<li>
+																					<a href="{{ path('app_home') }}#about-section" class="hover:text-secondary">{{ 'home_header.nav.about'|trans }}</a>
+																				</li>
+																				<li>
+																					<a href="{{ path('app_home') }}#faq-section" class="hover:text-secondary">{{ 'home_header.nav.faq'|trans }}</a>
+																				</li> #}
 					</ul>
 					<p>{{ 'home_header.footer.copyright'|trans({'%year%': 'now'|date('Y')}) }}</p>
 				</div>
@@ -111,78 +113,78 @@
 			{% endblock %}
 			<script>
 				// JavaScript for mobile menu toggle, theme toggle, and language toggle
-                    document.addEventListener('DOMContentLoaded', function () {
-                    const mobileMenuButton = document.getElementById('mobile-menu-button');
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    const optionsMenu = document.getElementById('options-menu');
-                    const dropdownMenu = document.getElementById('dropdown-menu');
-                    const themeToggle = document.getElementById('theme-toggle');
-                    const languageToggle = document.getElementById('language-toggle');
-                    const themeText = document.getElementById('theme-text');
-                    const languageText = document.getElementById('language-text');
+document.addEventListener('DOMContentLoaded', function () {
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const optionsMenu = document.getElementById('options-menu');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const themeToggle = document.getElementById('theme-toggle');
+const languageToggle = document.getElementById('language-toggle');
+const themeText = document.getElementById('theme-text');
+const languageText = document.getElementById('language-text');
 
-                    // Mobile menu toggle
-                    mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    });
+// Mobile menu toggle
+mobileMenuButton.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+});
 
-                    // Dropdown menu toggle
-                    optionsMenu.addEventListener('click', () => {
-                    dropdownMenu.classList.toggle('hidden');
-                    });
-                     // Close dropdown when clicking outside
-                    document.addEventListener('click', (event) => {
-                        if (!dropdownMenu.contains(event.target) && !optionsMenu.contains(event.target)) {
-                            dropdownMenu.classList.add('hidden');
-                        }
-                    });
+// Dropdown menu toggle
+optionsMenu.addEventListener('click', () => {
+dropdownMenu.classList.toggle('hidden');
+});
+// Close dropdown when clicking outside
+document.addEventListener('click', (event) => {
+if (! dropdownMenu.contains(event.target) && ! optionsMenu.contains(event.target)) {
+dropdownMenu.classList.add('hidden');
+}
+});
 
-                    // Theme toggle
-                    themeToggle.addEventListener('click', () => {
-                    document.documentElement.classList.toggle('dark');
-                    const isDark = document.documentElement.classList.contains('dark');
-                    themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
-                    setTheme(isDark);
-                    });
+// Theme toggle
+themeToggle.addEventListener('click', () => {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
+setTheme(isDark);
+});
 
-                    // Language toggle
-                    languageToggle.addEventListener('click', () => {
-                    const currentLang = languageText.textContent;
-                    const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-                    languageText.textContent = newLang;
-                    // Here you would typically redirect to change the language
-                    // window.location.href = "{{ path('change_language', {'locale': 'LANG'}) }}".replace('LANG', newLang.toLowerCase());
-                    });
+// Language toggle
+languageToggle.addEventListener('click', () => {
+const currentLang = languageText.textContent;
+const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+languageText.textContent = newLang;
+// Here you would typically redirect to change the language
+// window.location.href = "{{ path('change_language', {'locale': 'LANG'}) }}".replace('LANG', newLang.toLowerCase());
+});
 
-                    // Theme setting function
-                    function setTheme(isDark) {
-                    const logoLight = document.getElementById('logo-light');
-                    const logoDark = document.getElementById('logo-dark');
-                    const footerLogoLight = document.getElementById('footer-logo-light');
-                    const footerLogoDark = document.getElementById('footer-logo-dark');
+// Theme setting function
+function setTheme(isDark) {
+const logoLight = document.getElementById('logo-light');
+const logoDark = document.getElementById('logo-dark');
+const footerLogoLight = document.getElementById('footer-logo-light');
+const footerLogoDark = document.getElementById('footer-logo-dark');
 
-                    if (isDark) {
-                    logoLight.classList.add('hidden');
-                    logoDark.classList.remove('hidden');
-                    footerLogoLight.classList.add('hidden');
-                    footerLogoDark.classList.remove('hidden');
-                    } else {
-                    logoLight.classList.remove('hidden');
-                    logoDark.classList.add('hidden');
-                    footerLogoLight.classList.remove('hidden');
-                    footerLogoDark.classList.add('hidden');
-                    }
-                    }
+if (isDark) {
+logoLight.classList.add('hidden');
+logoDark.classList.remove('hidden');
+footerLogoLight.classList.add('hidden');
+footerLogoDark.classList.remove('hidden');
+} else {
+logoLight.classList.remove('hidden');
+logoDark.classList.add('hidden');
+footerLogoLight.classList.remove('hidden');
+footerLogoDark.classList.add('hidden');
+}
+}
 
-                    // Initialize theme based on system preference or previous setting
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    const storedTheme = localStorage.getItem('color-theme');
-                    if (storedTheme === 'dark' || (! storedTheme && prefersDark)) {
-                    document.documentElement.classList.add('dark');
-                    themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
-                    setTheme(true);
-                    }
-                    });
+// Initialize theme based on system preference or previous setting
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const storedTheme = localStorage.getItem('color-theme');
+if (storedTheme === 'dark' || (! storedTheme && prefersDark)) {
+document.documentElement.classList.add('dark');
+themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
+setTheme(true);
+}
+});
 			</script>
 		</body>
 	</html>

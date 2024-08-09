@@ -24,15 +24,6 @@
 		padding-top: var(--navbar-height);
 	}
 
-	/* Sprinkles effect */
-	.sprinkle {
-		position: fixed;
-		pointer-events: none;
-		background: rgba(0, 255, 0, 0.5);
-		border-radius: 50%;
-		transition: transform 0.3s, opacity 0.3s;
-	}
-
 	/* Section transitions */
 	section {
 		opacity: 0;
@@ -125,24 +116,13 @@
 			<!-- White circle with logo -->
 			<div class="absolute inset-0 flex justify-center items-center ">
 				<div class="bg-white rounded-2xl p-4 shadow-lg mx-auto ">
-					<img src="images/uiecc_logo.png" alt="UIECC Logo"
+					<img src="icons/uiecc_logo.svg" alt="UIECC Logo"
 						class="w-32 h-32 lg:w-56 lg:h-56 object-contain " />
 				</div>
 			</div>
 		</div>
 	</div>
-	<div
-		class="absolute bottom-2 left-[43%] transform -translate-x-1/2 flex flex-row space-x-4 -z-30 md:bottom-10 md:space-x-6 lg:bottom-20 lg:space-x-8">
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-	</div>
-	<div
-		class="absolute -bottom-[20%] left-[10%] transform -translate-x-1/2 flex flex-row space-x-4 z-10 md:-bottom-[15%] md:left-[8%] lg:-bottom-[10%] lg:left-[5%]">
-		<div class="bg-white rounded-full w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56"></div>
-	</div>
+	
 </div>
 
 
@@ -157,8 +137,7 @@
 		<p class="text-gray-600 font-medium mb-8 w-full lg:w-1/2 "> {# truncate #}
 			{{ 'about_section.description'|trans }}
 		</p>
-		{# <button class="see-more-btn text-main-green hover:text-hover-green">{{ 'about_section.see_more'|trans
-			}}</button> #}
+		
 
 		<div class="flex flex-col lg:flex-row lg:space-x-4 mb-8">
 			<div class="bg-white p-8 lg:p-16 rounded-lg shadow-md mb-4 lg:mb-0 flex-1 text-start">
@@ -184,8 +163,7 @@
 				<p class="text-gray-600 mb-10 "> {# truncate #}
 					{{ 'about_section.arrete_description'|trans }}
 				</p>
-				{# <button class="see-more-btn text-main-green hover:text-hover-green">{{ 'about_section.see_more'|trans
-					}}</button> #}
+				
 				<a href="pdf/ESIGN_Prospectus.pdf" download="ESIGN_Prospectus.pdf">
 					<button class="bg-main-green text-white px-4 py-2 rounded-lg hover:bg-green-600">
 						{{ 'about_section.download_arrete'|trans }}
@@ -194,27 +172,7 @@
 			</div>
 		</div>
 	</div>
-	<div
-		class="absolute top-[3%] left-[20%] flex flex-row space-x-4 z-10 md:top-[5%] md:left-[15%] lg:top-[8%] lg:left-[10%]">
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-	</div>
-	<div
-		class="absolute bottom-[3%] right-[25%] flex flex-row space-x-4 z-10 md:bottom-[5%] md:right-[20%] lg:bottom-[8%] lg:right-[15%]">
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-white rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-	</div>
-
-	<div
-		class="absolute -bottom-[15%] right-[1%] transform -translate-x-1/2 flex flex-row space-x-4 z-10 md:-bottom-[10%] md:right-[3%] lg:-bottom-[5%] lg:right-[5%]">
-		<div class="bg-white rounded-full w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56"></div>
-	</div>
+	
 </section>
 
 
@@ -255,21 +213,7 @@
 			<!-- Add more FAQ items as needed -->
 		</div>
 	</div>
-	<div class="absolute top-[4%] left-[3%] flex flex-row space-x-4 z-10 md:top-[5%] md:left-[5%] lg:top-[8%] lg:left-[10%]">
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-	</div>
-	
-	<div class="absolute bottom-[4%] right-[3%] flex flex-row space-x-4 z-10 md:bottom-[5%] md:right-[5%] lg:bottom-[8%] lg:right-[10%]">
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-		<div class="bg-green-50 rounded-full w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10"></div>
-	</div>
+
 </section>
 
 
@@ -286,34 +230,6 @@
 	window.addEventListener("load", setNavbarHeight);
 	window.addEventListener("resize", setNavbarHeight);
 
-	// Sprinkles effect
-	function createSprinkle(x, y) {
-		const sprinkle = document.createElement('div');
-		sprinkle.className = 'sprinkle';
-		sprinkle.style.left = `${x}px`;
-		sprinkle.style.top = `${y}px`;
-		sprinkle.style.width = `${Math.random() * 10 + 10
-			}px`;
-		sprinkle.style.height = sprinkle.style.width;
-		document.body.appendChild(sprinkle);
-
-		setTimeout(() => {
-			sprinkle.style.transform = `translate(${(Math.random() - 0.5) * 100
-				}px, ${(Math.random() - 0.5) * 100
-				}px)`;
-			sprinkle.style.opacity = '0';
-		}, 50);
-
-		setTimeout(() => {
-			document.body.removeChild(sprinkle);
-		}, 350);
-	}
-
-	document.addEventListener('mousemove', (e) => {
-		if (Math.random() < 0.1) {
-			createSprinkle(e.clientX, e.clientY);
-		}
-	});
 
 	// Section transitions
 	const sections = document.querySelectorAll('section');
