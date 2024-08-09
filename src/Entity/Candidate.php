@@ -71,6 +71,12 @@ class Candidate
     #[ORM\OneToOne(inversedBy: 'candidate', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $certificateType = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $candidateID = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -300,6 +306,39 @@ class Candidate
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCertificateType(): ?string
+    {
+        return $this->certificateType;
+    }
+
+    public function setCertificateType(?string $certificateType): static
+    {
+        $this->certificateType = $certificateType;
+
+        return $this;
+    }
+
+    public function generateCandidateID(): void
+    {
+        // Génération d'un nombre aléatoire de 5 chiffres
+        $randomNumber = str_pad((string)random_int(0, 99999), 5, '0', STR_PAD_LEFT);
+        $this->candidateID = '#CUE-' . $randomNumber;
+    }
+
+    // Getter et Setter pour candidateID
+
+    public function getCandidateID(): ?string
+    {
+        return $this->candidateID;
+    }
+
+    public function setCandidateID(?string $candidateID): static
+    {
+        $this->candidateID = $candidateID;
 
         return $this;
     }

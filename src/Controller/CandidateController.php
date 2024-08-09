@@ -31,22 +31,24 @@ class CandidateController extends AbstractController
     public function registerOrUpdate(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         /** @var User $user */
-        $user = $this->security->getUser();
+        $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('app_login');
         }
 
         $candidate = $user->getCandidate();
+        $isNewCandidate = false;
         if (!$candidate) {
             $candidate = new Candidate();
             $candidate->setUser($user);
+            $candidate->generateCandidateID(); // Génère l'identifiant unique ici
+            $isNewCandidate = true;
         }
 
         $form = $this->createForm(CandidateFormType::class, $candidate);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // Convertir le nom en majuscules
             $candidate->setName(strtoupper($candidate->getName()));
 
@@ -54,7 +56,9 @@ class CandidateController extends AbstractController
             $this->handleFileUpload($form, $candidate, $slugger, 'payementReceipt', 'payment_receipts_directory');
             $this->handleFileUpload($form, $candidate, $slugger, 'photo', 'photos_directory');
 
-            $entityManager->persist($candidate);
+            if ($isNewCandidate) {
+                $entityManager->persist($candidate);
+            }
             $entityManager->flush();
 
             $this->addFlash('success', 'Vos informations ont été enregistrées avec succès.');
@@ -66,7 +70,6 @@ class CandidateController extends AbstractController
             'candidate' => $candidate,
         ]);
     }
-
 
     private function handleFileUpload($form, $candidate, $slugger, $fieldName, $directoryParameter): void
     {
