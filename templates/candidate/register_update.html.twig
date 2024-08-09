@@ -84,13 +84,8 @@
 
               {# Étape 3: Autres informations #}
               <div id="step3" class="form-step hidden">
-<<<<<<< HEAD
-                <h3 class="text-lg font-medium mb-4">{{ 'candidate_form.step3_title' | trans }}</h3>
-                {% for field in ['region', 'depertement', 'field', 'examinationCenter', 'certificate', 'certificateYear', 'language'] %}
-=======
                 <h3 class="text-lg font-medium mb-4">Étape 3: Autres informations</h3>
                 {% for field in ['region', 'depertement', 'field', 'certificateType', 'examinationCenter', 'certificate', 'certificateYear', 'language'] %}
->>>>>>> ebdc929 (ras)
                     <div class="mb-4">
                         {{ form_label(form[field], ('candidate_form.'~field) | trans, {'label_attr': {'class': 'block text-gray-700 text-sm font-bold mb-2'}}) }}
                         {{ form_widget(form[field], {'attr': {'class': 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600'}}) }}

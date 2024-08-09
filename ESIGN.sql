@@ -43,10 +43,12 @@ CREATE TABLE `candidate` (
   `nationality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int DEFAULT NULL,
+  `certificate_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `candidate_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_C8B28E44A76ED395` (`user_id`),
   CONSTRAINT `FK_C8B28E44A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +57,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'EMANE BILE FéLICIEN DAVY','M','Sud','Mayo-Banyo','10023654789','CDN','Sangmelima','emane-bile-felicien-davy_certificate_66b23ffaf1063.jpg','2024-08-06 00:00:00','ndjom','2002','FR','123456789','emane-bile-felicien-davy_payementReceipt_66b23ffaf19f3.jpg','676469014','davyemane1@gmail.com','Cameroun','emane-bile-felicien-davy_photo_66b23ffaf21fe.jpg',1);
+INSERT INTO `candidate` VALUES (2,'EMANE BILE','Masculin','Adamaoua','Djérem','123456789','Création et Design Numerique','Sangmelima','emane-bile_certificate_66b63c5209b4f.jpg','2002-08-01 00:00:00','Ndjom','2002','Français','123456789','emane-bile_payementReceipt_66b63becf1239.jpg','697379517','davyemane1@gmail.com','Cameroun','emane-bile_photo_66b63becf1317.jpg',3,'Baccalaureat A (Littéraire)',NULL),(3,'EMANE BILE','Féminin','Adamaoua','Djérem','123456789','Création et Design Numerique','Sangmelima',NULL,'2024-08-07 00:00:00','Ndjom','2002','Français','123654789','emane-bile_payementReceipt_66b643d9ddce4.jpg','697379548','davyemane1@gmail.com','Cameroun','emane-bile_photo_66b643d9ddec7.jpg',4,'Baccalaureat A (Littéraire)','#CUE-77024');
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,7 +82,7 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20240806120239','2024-08-06 12:03:12',973),('DoctrineMigrations\\Version20240806124237','2024-08-06 12:42:47',1315),('DoctrineMigrations\\Version20240806135942','2024-08-06 13:59:52',5203);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20240806120239','2024-08-06 12:03:12',973),('DoctrineMigrations\\Version20240806124237','2024-08-06 12:42:47',1315),('DoctrineMigrations\\Version20240806135942','2024-08-06 13:59:52',5203),('DoctrineMigrations\\Version20240808160336','2024-08-08 16:03:54',851);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +100,7 @@ CREATE TABLE `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_IDENTIFIER_USERNAME` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +109,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'davyemane','[\"ROLE_USER\"]','$2y$13$PNCY5hu3ZTCzjsGROLSOR./jdTy7uLm3OHEhB3hpRIbumyHYEjf8G');
+INSERT INTO `user` VALUES (1,'davyemane','[\"ROLE_USER\"]','$2y$13$PNCY5hu3ZTCzjsGROLSOR./jdTy7uLm3OHEhB3hpRIbumyHYEjf8G'),(2,'tapiba','[\"ROLE_USER\"]','$2y$13$2jnxlbmKN7xx/GKHBVGFVebhgxdjIGdcVjS5mr6C/hGcMHTE2RBOy'),(3,'bile','[\"ROLE_USER\"]','$2y$13$0noJiTZixC9WEs1aZO1ZOu/1ePf6Lj25zV9uJ.xjfPOq/hZ.cT8ya'),(4,'felicien','[\"ROLE_USER\"]','$2y$13$Mt2DTDbAHZQibFtdejuVied.05KmdYZi3SdqnWejcxM7pmuX.XG4G');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -120,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-07 16:08:13
+-- Dump completed on 2024-08-09 17:45:53
