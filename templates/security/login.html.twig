@@ -34,9 +34,9 @@
                     {% endif %}
 
                     {% if app.user %}
-                        <div class="mb-3">
+                        <div class="mb-3 ">
                             {{ 'login_page.logged_in_as'|trans({'%username%': app.user.userIdentifier}) }}
-                            <a href="{{ path('app_logout') }}" class="font-medium text-main-green hover:text-secondary-green">{{ 'login_page.logout'|trans }}</a>
+                            <a href="{{ path('app_logout') }}" class="font-semibold  text-main-green hover:text-secondary-green">{{ 'login_page.logout'|trans }}</a>
                         </div>
                     {% endif %}
 

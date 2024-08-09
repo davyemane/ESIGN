@@ -1,216 +1,266 @@
-{# <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Fiche d'Inscription</title>
-	</head>
-	<body style="font-family: Arial, sans-serif; line-height: 1.4; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; font-size: 14px;">
-		<div style="text-align: center; margin-bottom: 20px;">
-			<h1 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; font-size: 20px;">Fiche d'Inscription</h1>
-		</div>
-
-		<div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
-			<h2 style="color: #2980b9; margin-top: 0; margin-bottom: 10px; font-size: 16px;">Informations Personnelles</h2>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Nom:</strong>
-				<span style="color: #333;">{{ candidate.name }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Sexe:</strong>
-				<span style="color: #333;">{{ candidate.sexe }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Date de Naissance:</strong>
-				<span style="color: #333;">{{ candidate.dateOfBirth|date('d/m/Y') }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Lieu de Naissance:</strong>
-				<span style="color: #333;">{{ candidate.placeOfBirth }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Nationalité:</strong>
-				<span style="color: #333;">{{ candidate.nationality }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">CNI:</strong>
-				<span style="color: #333;">{{ candidate.cni }}</span>
-			</p>
-		</div>
-
-		<div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
-			<h2 style="color: #2980b9; margin-top: 0; margin-bottom: 10px; font-size: 16px;">Coordonnées</h2>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Téléphone:</strong>
-				<span style="color: #333;">{{ candidate.phoneNumber }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Email:</strong>
-				<span style="color: #333;">{{ candidate.email }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Région:</strong>
-				<span style="color: #333;">{{ candidate.region }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Département:</strong>
-				<span style="color: #333;">{{ candidate.depertement }}</span>
-			</p>
-		</div>
-
-		<div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px; margin-bottom: 15px;">
-			<h2 style="color: #2980b9; margin-top: 0; margin-bottom: 10px; font-size: 16px;">Informations Académiques</h2>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Domaine:</strong>
-				<span style="color: #333;">{{ candidate.field }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Centre d'Examen:</strong>
-				<span style="color: #333;">{{ candidate.examinationCenter }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Certificat:</strong>
-				<span style="color: #333;">{{ candidate.certificate }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Année du Certificat:</strong>
-				<span style="color: #333;">{{ candidate.certificateYear }}</span>
-			</p>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Langue:</strong>
-				<span style="color: #333;">{{ candidate.language }}</span>
-			</p>
-		</div>
-
-		<div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px;">
-			<h2 style="color: #2980b9; margin-top: 0; margin-bottom: 10px; font-size: 16px;">Informations de Paiement</h2>
-			<p style="margin: 5px 0;">
-				<strong style="color: #2c3e50;">Numéro de Transaction:</strong>
-				<span style="color: #333;">{{ candidate.transactionNumber }}</span>
-			</p>
-		</div>
-
-		<div style="text-align: center; margin-top: 20px; font-size: 12px; color: #7f8c8d;">
-			<p>Ce document est généré automatiquement. Veuillez ne pas le modifier.</p>
-		</div>
-	</body>
-</html>
- #}
-
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Aperçu des Informations du Candidat</title>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+		<style>
+			body,
+			html {
+				font-family: 'Montserrat', sans-serif;
+				font-size: 14px; /* Increased from 12px */
+				margin: 0;
+				padding: 0;
+			}
+			.container {
+				max-width: 700px; /* Reduced from 800px */
+				margin: 0 auto;
+				padding: 20px; /* Increased from 10px */
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+			}
+			.timbre-fiscal {
+				position: absolute;
+				top: 30px;
+				left: 30px;
+				border: 2px solid #000;
+				padding: 10px;
+				font-weight: bold;
+				font-size: 16px;
+			}
+			.header {
+				position: relative;
+				height: 120px;
+				margin-bottom: 30px;
+				margin-top: 50px;
+			}
+			.flag {
+				position: absolute;
+				top: 40px;
+				height: 50px;
+			}
+			.logo {
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				height: 100px;
+			}
+			.main-content {
+				border: 2px solid #0e6d4d;
+				border-radius: 10px;
+				padding: 30px;
+				margin-top: 30px;
+			}
+			.title {
+				text-align: center;
+				margin-bottom: 30px; /* Increased from 10px */
+			}
+			.title h2 {
+				font-size: 12px; /* Increased from 12px */
+				margin: 0;
+			}
+			.title h3 {
+				font-size: 20px; /* Increased from 16px */
+				margin: 5px 0; /* Increased from 5px 0 */
+			}
+			.info-section {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start; /* Align items to the top */
+				margin-top: 40px; /* Increased margin-top */
+				margin-bottom: 40px; /* Added margin-bottom */
+			}
+			.info-column {
+				flex: 1;
+				margin-right: 20px;
+			}
+			.info-column:last-child {
+				margin-right: 0;
+			}
+			.info-columns {
+				display: inline-block;
+				justify-content: space-between;
+			}
+			.info-item {
+				margin-bottom: 10px; /* Increased from 5px */
+			}
+			.info-label {
+				font-size: 11px;
+				font-style: italic;
+				border-bottom: 1px solid #111827;
+				display: inline-block;
+				width: 100%;
+				margin-bottom: 5px;
+			}
+			.info-label1 {
+				font-size: 11px;
+				font-style: italic;
+				border-bottom: 1px solid #111827;
+				display: inline-block;
+				width: 60%;
+				margin-bottom: 5px;
+			}
+			.info-value {
+				font-weight: 600;
+				display: block;
+			}
+
+			.info-table {
+				width: 100%;
+				border-collapse: separate;
+				border-spacing: 0 10px;
+			}
+			.info-table td {
+				vertical-align: top;
+				padding: 0;
+			}
+			.photo-placeholder {
+				position: absolute;
+				top: 335px;
+				right: 80px;
+				height: 130px;
+				width: 150px;
+				border: 1px solid #D1D5DB;
+				background-color: #D1D5DB;
+				/* display: flex;
+            justify-content: right;
+            align-items: right;
+            margin-left: 20px; /* Space between info and photo */
+				/* flex-shrink: 0; Prevents shrinking */ */
+			}
+			.concours-info {
+				margin-top: 40px; /* Increased margin-top */
+				margin-bottom: 40px; /* Added margin-bottom */
+			}
+			.concours-header {
+				background-color: #0e6d4d;
+				color: white;
+				padding: 10px; /* Increased from 5px */
+				text-align: center;
+			}
+			.concours-content {
+				border: 1px solid #10B981;
+				padding: 15px;
+			}
+			.signature-section {
+				margin-top: 40px;
+				text-align: right;
+			}
+			.signature-box {
+				width: 150px;
+				height: 80px;
+				border: 1px solid #000;
+				margin: 10px 0 0 auto;
+			}
+		</style>
 	</head>
-	<body style="font-family: 'Montserrat', sans-serif; background-color: #f7fafc; padding: 20px;">
+	<body>
+		<div class="container">
+			<div class="timbre-fiscal">Timbre Fiscal</div>
+			<div class="header">
+				<img src="{{ absolute_url(asset('images/cameroon.png')) }}" alt="Cameroon Flag" class="flag" style="left: 20px;">
+				<img src="{{ absolute_url(asset('images/uiecc_logo.png')) }}" alt="UIECC Logo" class="logo">
+				<img src="{{ absolute_url(asset('images/congo.png')) }}" alt="Congo Flag" class="flag" style="right: 20px;">
+			</div>
 
-		<div style="max-width: 1600px; margin: 0 auto;">
-			<div style="background-color: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-				<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-					<img src="{{ asset('/images/cameroon.png')}}" alt="Cameroon Flag" style="height: 56px;">
-					<img src="/images/uiecc_logo.png" alt="UIECC Logo" style="height: 112px;">
-					<img src="/images/congo.png" alt="Congo Flag" style="height: 56px;">
+			<div class="main-content">
+				<div class="title">
+					<h2>UNIVERSITE INTER-ETATS CAMEROUN-CONGO</h2>
+					<h3>RECIPISSE DE DEPOT DE DOSSIER</h3>
 				</div>
 
-				<div style="border: 4px solid #2f855a; border-radius: 16px; padding: 16px;">
-					<div style="text-align: center; margin-bottom: 40px;">
-						<h2 style="font-size: 14px; font-weight: bold; margin-bottom: 0;">UNIVERSITE INTER-ETATS CAMEROUN-CONGO</h2>
-						<h3 style="font-size: 24px; font-weight: 600; margin-bottom: 0;">RECIPISSE DE DEPOT DE DOSSIER</h3>
-					</div>
+				<div class="info-section relative">
 
-					<div style="display: flex; justify-content: space-between;">
-						<div style="flex: 1;">
-							<div style="margin-bottom: 16px;">
-								<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c; width: 66%;">No Dossier:</span>
-								<span style="color: #e53e3e; font-weight: 600;">***************</span>
-							</div>
-							<div style="margin-bottom: 16px;">
-								<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c; width: 66%;">Filiere choisie:</span>
-								<span style="font-weight: 600;">{{ candidate.field }}</span>
-							</div>
-							<div style="margin-bottom: 16px;">
-								<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c; width: 66%;">Session du concours:</span>
-								<span style="font-weight: 600;">2024</span>
-							</div>
+					<div class="info-column">
+						<div class="info-item">
+							<span class="info-label1">No Dossier:</span>
+							<span class="info-value" style="color: #DC2626;">***************</span>
 						</div>
-						<div style="width: 160px; height: 160px; border: 1px solid #e2e8f0; background-color: #e2e8f0; display: flex; justify-content: center; align-items: center;">
-							<span style="display: block; height: 160px; width: 160px;">
-								{% if candidate.photo %}
-									<img src="{{ asset('uploads/photos/' ~ candidate.photo) }}" alt="Photo du candidat" style="height: 160px; width: 160px; object-fit: cover;">
-								{% else %}
-									<div class="rounded-full h-32 w-32 bg-gray-300 flex items-center justify-center text-gray-500">
-										<span class="text-4xl">?</span>
-									</div>
-								{% endif %}
-							</span>
+						<div class="info-item">
+							<span class="info-label1">Filiere choisie:</span>
+							<span class="info-value">{{ candidate.field }}</span>
+						</div>
+						<div class="info-item">
+							<span class="info-label1">Session du concours:</span>
+							<span class="info-value">2024</span>
 						</div>
 					</div>
-
-					<div style="margin-top: 40px;">
-						<div style="background-color: #2f855a; color: white; padding: 16px; border-radius: 8px 8px 0 0; text-align: center;">
-							<h4 style="font-weight: 600; margin: 0;">INFORMATIONS SUR LE CONCOURS</h4>
-						</div>
-						<div style="border: 1px solid #2f855a; padding: 40px 24px; border-radius: 0 0 8px 8px;">
-							<div style="display: flex; justify-content: space-between;">
-								<div style="flex: 1; margin-right: 40px;">
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Nom et Prenoms:</span>
-										<span style="font-weight: 600;">{{ candidate.name }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Date de naissance:</span>
-										<span style="font-weight: 600;">{{ candidate.dateOfBirth|date('d/m/Y') }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Nationalité:</span>
-										<span style="font-weight: 600;">{{ candidate.nationality }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Centre d'Examen (Lieu de depot du dossier):</span>
-										<span style="font-weight: 600;">{{ candidate.examinationCenter }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Langue de Composition:</span>
-										<span style="font-weight: 600;">{{ candidate.language }}</span>
-									</div>
-								</div>
-								<div style="flex: 1;">
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Sexe:</span>
-										<span style="font-weight: 600;">{{ candidate.sexe }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Lieu de naissance:</span>
-										<span style="font-weight: 600;">{{ candidate.placeOfBirth }}</span>
-									</div>
-									<div style="margin-bottom: 24px;">
-										<span style="display: block; font-size: 12px; font-style: italic; border-bottom: 1px solid #1a202c;">Diplome presente | Serie:</span>
-										<span style="font-weight: 600;">{{ candidate.certificate }}</span>
-									</div>
-								</div>
+					<div class="photo-placeholder">
+						{% if candidate.photo %}
+							<img src="{{ absolute_url(asset('uploads/photos/' ~ candidate.photo)) }}" alt="Photo du candidat" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+						{% else %}
+							<div class="rounded-full h-32 w-32 bg-gray-300 flex items-center justify-center text-gray-500">
+								<span style="font-size: 24px;">?</span>
 							</div>
-						</div>
+						{% endif %}
 					</div>
 
-					<div style="margin-top: 48px; text-align: right;">
-						<div style="text-align: center;">
-							<span style="font-weight: 600; font-size: 10px;">SIGNATURE DU RECEPTEUR</span>
-							<div style="width: 224px; height: 112px; border: 1px solid #e2e8f0; margin-top: 8px;"></div>
-						</div>
-						<div style="font-size: 10px; font-style: italic; margin-top: 48px;">
-							<span>Imprimee le
-								{{ "now"|date("d F Y, h:i a") }}</span>
-						</div>
+				</div>
+
+
+				<div class="concours-info">
+					<div class="concours-header">
+						<h4 style="margin: 0;">INFORMATIONS SUR LE CONCOURS</h4>
+					</div>
+					<div class="concours-content">
+						<table class="info-table">
+							<tr>
+								<td width="50%">
+									<span class="info-label">Nom et Prenoms:</span>
+									<span class="info-value">{{ candidate.name }}</span>
+								</td>
+								<td width="50%">
+									<span class="info-label">Sexe:</span>
+									<span class="info-value">{{ candidate.sexe }}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="info-label">Date de naissance:</span>
+									<span class="info-value">{{ candidate.dateOfBirth|date('d/m/Y') }}</span>
+								</td>
+								<td>
+									<span class="info-label">Lieu de naissance:</span>
+									<span class="info-value">{{ candidate.placeOfBirth }}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="info-label">Nationalité:</span>
+									<span class="info-value">{{ candidate.nationality }}</span>
+								</td>
+								<td>
+									<span class="info-label">Diplome presente | Serie:</span>
+									<span class="info-value">{{ candidate.certificate }}</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span class="info-label">Centre d'Examen:</span>
+									<span class="info-value">{{ candidate.examinationCenter }}</span>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>
+									<span class="info-label">Langue de Composition:</span>
+									<span class="info-value">{{ candidate.language }}</span>
+								</td>
+								<td></td>
+							</tr>
+						</table>
 					</div>
 				</div>
 
-				<div style="text-align: center; margin-top: 20px; font-size: 12px; color: #7f8c8d;">
-					<p>Ce document est généré automatiquement. Veuillez ne pas le modifier.</p>
+				<div class="signature-section">
+					<span style="font-weight: 600; font-size: 10px;">SIGNATURE DU RECEPTEUR</span>
+					<div class="signature-box"></div>
+					<div style="font-size: 10px; font-style: italic; margin-top: 30px;">
+						Imprimee le
+						{{ "now"|date("d F Y, h:i a") }}
+					</div>
 				</div>
 			</div>
-		</div>
-
+		</body>
 	</body>
-</html>
+</html></div></body></html>

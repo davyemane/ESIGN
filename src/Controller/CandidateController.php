@@ -117,7 +117,8 @@ class CandidateController extends AbstractController
         }
 
         $options = new Options();
-        $options->set('defaultFont', 'Arial');
+        $options->set('defaultFont', 'Montserrat');
+        $options->set('isRemoteEnabled', true);
         $dompdf = new Dompdf($options);
 
         $html = $this->renderView('candidate/pdf.html.twig', [
