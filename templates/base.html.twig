@@ -23,8 +23,8 @@
 				<!-- Logo -->
 
 				<a href="{{path('app_home')}}" class="flex items-center text-main-green">
-					<img id="logo-light" class="h-8 md:h-16 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
-					<img id="logo-dark" class="h-8 md:h-16 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+					<img id="logo-light" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+					<img id="logo-dark" class="h-8 sm:h-10 md:h-12 lg:h-14 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 				</a>
 
 
@@ -52,8 +52,12 @@
 						<div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
 							<div class="py-1">
 								<ul>
-									<li class="ml-2 py-1 px-1"><a href="{{ path('switch_language', {'locale': 'en'}) }}">{{ 'home_header.language.english'|trans }}</a></li>
-									<li class=" ml-2 py-1 px-1"><a href="{{ path('switch_language', {'locale': 'fr'}) }}">{{ 'home_header.language.french'|trans }}</a></li>
+									<li class="ml-2 py-1 px-1">
+										<a href="{{ path('switch_language', {'locale': 'en'}) }}">{{ 'home_header.language.english'|trans }}</a>
+									</li>
+									<li class=" ml-2 py-1 px-1">
+										<a href="{{ path('switch_language', {'locale': 'fr'}) }}">{{ 'home_header.language.french'|trans }}</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -86,8 +90,8 @@
 			<footer class="bg-background dark:bg-background text-text dark:text-text py-8">
 				<div class="container mx-auto px-12 flex flex-col md:flex-row items-center justify-between">
 					<a href="#" class="mb-4 md:mb-0">
-						<img id="footer-logo-light" class="h-12 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
-						<img id="footer-logo-dark" class="h-12 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+						<img id="footer-logo-light" class="h-8 sm:h-10 md:h-12 w-auto" src="{{ asset('icons/uiecc_logo.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
+						<img id="footer-logo-dark" class="h-8 sm:h-10 md:h-12 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 					</a>
 					<ul class="flex space-x-20 mb-4 md:mb-0 text-main-green font-semibold">
 						<li>
@@ -109,79 +113,79 @@
 			{% endblock %}
 			<script>
 				// JavaScript for mobile menu toggle, theme toggle, and language toggle
-				document.addEventListener('DOMContentLoaded', function () {
-					const mobileMenuButton = document.getElementById('mobile-menu-button');
-					const mobileMenu = document.getElementById('mobile-menu');
-					const optionsMenu = document.getElementById('options-menu');
-					const dropdownMenu = document.getElementById('dropdown-menu');
-					const themeToggle = document.getElementById('theme-toggle');
-					const languageToggle = document.getElementById('language-toggle');
-					const themeText = document.getElementById('theme-text');
-					const languageText = document.getElementById('language-text');
+document.addEventListener('DOMContentLoaded', function () {
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const optionsMenu = document.getElementById('options-menu');
+const dropdownMenu = document.getElementById('dropdown-menu');
+const themeToggle = document.getElementById('theme-toggle');
+const languageToggle = document.getElementById('language-toggle');
+const themeText = document.getElementById('theme-text');
+const languageText = document.getElementById('language-text');
 
-					// Mobile menu toggle
-					mobileMenuButton.addEventListener('click', () => {
-					mobileMenu.classList.toggle('hidden');
-					});
+// Mobile menu toggle
+mobileMenuButton.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+});
 
-					// Dropdown menu toggle
-					optionsMenu.addEventListener('click', () => {
-					dropdownMenu.classList.toggle('hidden');
-					});
+// Dropdown menu toggle
+optionsMenu.addEventListener('click', () => {
+dropdownMenu.classList.toggle('hidden');
+});
 
-					// Close dropdown when clicking outside
-					document.addEventListener('click', (event) => {
-					if (! dropdownMenu.contains(event.target) && ! optionsMenu.contains(event.target)) {
-					dropdownMenu.classList.add('hidden');
-					}
-					});
+// Close dropdown when clicking outside
+document.addEventListener('click', (event) => {
+if (! dropdownMenu.contains(event.target) && ! optionsMenu.contains(event.target)) {
+dropdownMenu.classList.add('hidden');
+}
+});
 
-					// Theme toggle
-					themeToggle.addEventListener('click', () => {
-					document.documentElement.classList.toggle('dark');
-					const isDark = document.documentElement.classList.contains('dark');
-					themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
-					setTheme(isDark);
-					});
+// Theme toggle
+themeToggle.addEventListener('click', () => {
+document.documentElement.classList.toggle('dark');
+const isDark = document.documentElement.classList.contains('dark');
+themeText.textContent = isDark ? "{{ 'home_header.nav.toggle_light_mode'|trans }}" : "{{ 'home_header.nav.toggle_dark_mode'|trans }}";
+setTheme(isDark);
+});
 
-					// Language toggle
-					languageToggle.addEventListener('click', () => {
-					const currentLang = languageText.textContent;
-					const newLang = currentLang === 'EN' ? 'FR' : 'EN';
-					languageText.textContent = newLang;
-					// Here you would typically redirect to change the language
-					//
-					});
+// Language toggle
+languageToggle.addEventListener('click', () => {
+const currentLang = languageText.textContent;
+const newLang = currentLang === 'EN' ? 'FR' : 'EN';
+languageText.textContent = newLang;
+// Here you would typically redirect to change the language
+//
+});
 
-					// Theme setting function
-					function setTheme(isDark) {
-					const logoLight = document.getElementById('logo-light');
-					const logoDark = document.getElementById('logo-dark');
-					const footerLogoLight = document.getElementById('footer-logo-light');
-					const footerLogoDark = document.getElementById('footer-logo-dark');
+// Theme setting function
+function setTheme(isDark) {
+const logoLight = document.getElementById('logo-light');
+const logoDark = document.getElementById('logo-dark');
+const footerLogoLight = document.getElementById('footer-logo-light');
+const footerLogoDark = document.getElementById('footer-logo-dark');
 
-					if (isDark) {
-					logoLight.classList.add('hidden');
-					logoDark.classList.remove('hidden');
-					footerLogoLight.classList.add('hidden');
-					footerLogoDark.classList.remove('hidden');
-					} else {
-					logoLight.classList.remove('hidden');
-					logoDark.classList.add('hidden');
-					footerLogoLight.classList.remove('hidden');
-					footerLogoDark.classList.add('hidden');
-					}
-					}
+if (isDark) {
+logoLight.classList.add('hidden');
+logoDark.classList.remove('hidden');
+footerLogoLight.classList.add('hidden');
+footerLogoDark.classList.remove('hidden');
+} else {
+logoLight.classList.remove('hidden');
+logoDark.classList.add('hidden');
+footerLogoLight.classList.remove('hidden');
+footerLogoDark.classList.add('hidden');
+}
+}
 
-					// Initialize theme based on system preference or previous setting
-					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-					const storedTheme = localStorage.getItem('color-theme');
-					if (storedTheme === 'dark' || (! storedTheme && prefersDark)) {
-					document.documentElement.classList.add('dark');
-					themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
-					setTheme(true);
-					}
-					});
+// Initialize theme based on system preference or previous setting
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const storedTheme = localStorage.getItem('color-theme');
+if (storedTheme === 'dark' || (! storedTheme && prefersDark)) {
+document.documentElement.classList.add('dark');
+themeText.textContent = "{{ 'home_header.nav.toggle_light_mode'|trans }}";
+setTheme(true);
+}
+});
 			</script>
 		</body>
 	</html>

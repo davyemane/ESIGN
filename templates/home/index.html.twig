@@ -60,10 +60,10 @@
 </style>
 
 {# Ajoutez ici le contenu de votre page d'accueil #}
-<div class="bg-background dark:bg-background text-text dark:text-text overflow-hidden hero-section">
-	<div class="flex flex-col lg:flex-row items-center justify-center h-full w-full">
+<div class="bg-background dark:bg-background text-text dark:text-text overflow-hidden min-h-screen flex items-center">
+    <div class="container mx-auto px-4 py-12 flex flex-col lg:flex-row items-center justify-between">
 		<!-- Left side content -->
-		<div class="flex flex-col justify-center items-start p-6 lg:w-1/2 max-w-2xl " id="hero-section">
+		<div class="flex flex-col justify-center items-start lg:w-1/2 mb-8 lg:mb-0">
 			<div class="absolute inset-0 -z-10 overflow-hidden">
 				<svg class="absolute left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]"
 					aria-hidden="true">
@@ -110,14 +110,13 @@
 			</div>
 		</div>
 		<!-- Right side with blurred background and logo -->
-		<div class="h-64 w-full lg:h-[700px] lg:w-[600px] relative overflow-hidden hidden xl:block">
+		<div class="h-64 w-full lg:h-[700px] lg:w-[600px] relative overflow-hidden sm:hidden">
 			<!-- Blurred background -->
 			<div class="absolute inset-0 blurred-bg filter blur-[2px] "></div>
 			<!-- White circle with logo -->
 			<div class="absolute inset-0 flex justify-center items-center ">
 				<div class="bg-white rounded-2xl p-4 shadow-lg mx-auto ">
-					<img src="icons/uiecc_logo.svg" alt="UIECC Logo"
-						class="w-32 h-32 lg:w-56 lg:h-56 object-contain " />
+					<img src="icons/uiecc_logo.svg" alt="UIECC Logo" class="w-32 h-32 lg:w-56 lg:h-56 object-contain " />
 				</div>
 			</div>
 		</div>

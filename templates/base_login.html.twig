@@ -28,10 +28,7 @@
 
 				<!-- Navigation Links - Hidden on mobile -->
 				<div
-					class="hidden md:flex space-x-20">{# <a href="{{path('app_home')}}" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.home'|trans }}</a>
-																	<a href="{{ path('app_home') }}#about-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.about'|trans }}</a>
-																	<a href="{{ path('app_home') }}#faq-section" class="nav-link text-main-green hover:text-hover-green font-semibold">{{ 'home_header.nav.faq'|trans }}</a> #}
-				</div>
+					class="hidden md:flex space-x-20">
 
 				<!-- Right side elements -->
 				<div
@@ -75,11 +72,7 @@
 			<!-- Mobile menu -->
 			<div class="hidden md:hidden" id="mobile-menu">
 				<div
-					class="px-2 pt-2 pb-3 space-y-1">{# <a href="{{ path('app_home') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.home'|trans }}</a>
-																	<a href="{{ path('app_home') }}#about-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.about'|trans }}</a>
-																	<a href="{{ path('app_home') }}#faq-section" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.faq'|trans }}</a>
-																	<a href="{{ path('app_login') }}" class=" nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.login'|trans }}</a>
-																	<a href="{{ path('app_register') }}" class="nav-link block px-3 py-2 rounded-md text-base font-semibold text-main-green hover:text-hover-green">{{ 'home_header.nav.register'|trans }}</a> #}
+					class="px-2 pt-2 pb-3 space-y-1">
 				</div>
 			</div>
 		</header>
@@ -94,16 +87,8 @@
 						<img id="footer-logo-dark" class="h-12 w-auto hidden" src="{{ asset('/images/uiecc_logo_dark.svg') }}" alt="{{ 'home_header.app.logo_alt'|trans }}">
 					</a>
 					<ul
-						class="flex space-x-20 mb-4 md:mb-0 text-main-green font-semibold">{# <li>
-																					<a href="{{ path('app_home') }}#hero-section" class="">{{ 'home_header.nav.home'|trans }}</a>
-																				</li>
-																				<li>
-																					<a href="{{ path('app_home') }}#about-section" class="hover:text-secondary">{{ 'home_header.nav.about'|trans }}</a>
-																				</li>
-																				<li>
-																					<a href="{{ path('app_home') }}#faq-section" class="hover:text-secondary">{{ 'home_header.nav.faq'|trans }}</a>
-																				</li> #}
-					</ul>
+						class="flex space-x-20 mb-4 md:mb-0 text-main-green font-semibold">
+																					
 					<p>{{ 'home_header.footer.copyright'|trans({'%year%': 'now'|date('Y')}) }}</p>
 				</div>
 			</footer>
